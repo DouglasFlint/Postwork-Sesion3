@@ -11,6 +11,7 @@ class Usuario{
         this.tipo_usuario = tipo_usuario; // Tipo Usuario del cliente
         this.edad = edad; // Edad del cliente    \
 
+    }
         guardar() {
             //función para guardar un registro nuevo en la base de datos
         }
