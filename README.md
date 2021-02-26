@@ -66,13 +66,10 @@ La entidad de peliculas tiene las funciones de agregar, eliminar, modificar y ob
 La entidad de críticas tiene las funciones de agregar, eliminar, modificar y obtener todas las reseñas, asi como filtrar segun sus caracteristicas.
 La entidad de usuarios tiene las funciones de agregar, modificar y obtener todos los usuarios asi como filtrar por características o campos.
 
-Historias de usuario
-"Como Admin quiero agregar, editar, listar y eliminar registros de peliculas para su consulta por otros usuarios"
-“Como Crítico quiero agregar ,editar, listar y eliminar críticas de peliculas para su consulta por otros usuarios”
-“Como Usuario quiero listar registros de peliculas para ver su información”.
-
-Definan en JavaScript las clases que representen cada entidad de su proyecto.
-Crear un repositorio en Git de su proyecto, en donde se debe de subir todo el código.
+## Historias de usuario
+* "Como Admin quiero agregar, editar, listar y eliminar registros de peliculas para su consulta por otros usuarios"
+* “Como Crítico quiero agregar ,editar, listar y eliminar críticas de peliculas para su consulta por otros usuarios”
+* “Como Usuario quiero listar registros de peliculas para ver su información”.
 
 ## ¿Qué espero que haga el proyecto?
  
