@@ -4,7 +4,7 @@ Criticos pueden dar su calificacion y su respectiva reseña a las peliculas agre
 demas usuarios pueden ver estas recomendaciones para poder elegir las peliculas que mas les pueden gustar.
 
 
-Temática de su proyecto.
+# Temática de su proyecto.
 Definan los requerimientos del proyecto, así como su estructura, es decir, respondan las preguntas
 ¿Qué tipos de usuario tendrá nuestro sistema?
 Admin
