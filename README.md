@@ -10,51 +10,51 @@ Definan los requerimientos del proyecto, así como su estructura, es decir, resp
 * Admin
 * Critico
 * Usuario
-¿Qué acciones puede realizar cada usuario?
-Admin
-Crear registros de películas
-Eliminar registros de películas
-Listar registros de películas
-Editar registros de películas
-Crítico
-Crear reseñas de películas
-Eliminar reseñas de películas (Sólo de las cuales es autor)
-Modificar reseñas de películas (Sólo de las cuales es autor)
-Usuario
-Listar reseñas de películas
-¿Qué información se necesita?
-Pelicula
-Nombre de la película
-ID de la película
-Duración
-Género
-Calificación
-Reseña
-Director
-Año
-Reseña
-Reseña
-ID de la reseña
-ID del usuario
+## ¿Qué acciones puede realizar cada usuario?
+* Admin
+* Crear registros de películas
+* Eliminar registros de películas
+* Listar registros de películas
+* Editar registros de películas
+* Crítico
+* Crear reseñas de películas
+* Eliminar reseñas de películas (Sólo de las cuales es autor)
+* Modificar reseñas de películas (Sólo de las cuales es autor)
+* Usuario
+* Listar reseñas de películas
+## ¿Qué información se necesita?
+* Pelicula
+* Nombre de la película
+ * ID de la película
+* Duración
+* Género
+* Calificación
+* Reseña
+* Director
+* Año
+* Reseña
+* Reseña
+* ID de la reseña
+* ID del usuario
 
-Usuario
-Nombre del usuario
-Edad del usuario
-Género del usuario
-Ocupación del usuario (para saber a qué tipo de personas le gustan qué películas)
-Tipo de usuario
+## Usuario
+* Nombre del usuario
+* Edad del usuario
+* Género del usuario
+* Ocupación del usuario (para saber a qué tipo de personas le gustan qué películas)
+* Tipo de usuario
 
 
 
-¿Cuáles son las principales entidades?
+## ¿Cuáles son las principales entidades?
 
-Tres entidades principales, las peliculas que seran nuestros datos y un super usuario que heredara caracteristicas y permisos hacia los demas usuarios
+* Tres entidades principales, las peliculas que seran nuestros datos y un super usuario que heredara caracteristicas y permisos hacia los demas usuarios
 
-Críticas
-Películas
-Usuarios
+* Críticas
+* Películas
+* Usuarios
 
-¿Qué características tiene cada entidad?
+## ¿Qué características tiene cada entidad?
 
 Las películas tendrán información que las defina como nombre, genero, duracion, director, año de estreno, etc para que los usuarios puedan tener más opciones para asi poder filtrar el tipo de peliculas que le sean mas de agrado. 
 Las críticas tendran caracteristicas como reseña y calificación, el campo de reseña será opcional mientras que el de calificación será obligatorio. 
@@ -74,7 +74,7 @@ Historias de usuario
 Definan en JavaScript las clases que representen cada entidad de su proyecto.
 Crear un repositorio en Git de su proyecto, en donde se debe de subir todo el código.
 
-¿Qué espero que haga el proyecto?
+## ¿Qué espero que haga el proyecto?
  
 CRUD básico
 
