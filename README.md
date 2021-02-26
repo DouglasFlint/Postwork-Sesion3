@@ -6,10 +6,10 @@ demas usuarios pueden ver estas recomendaciones para poder elegir las peliculas 
 
 # Temática de su proyecto.
 Definan los requerimientos del proyecto, así como su estructura, es decir, respondan las preguntas
-¿Qué tipos de usuario tendrá nuestro sistema?
-Admin
-Critico
-Usuario
+### ¿Qué tipos de usuario tendrá nuestro sistema?
+* Admin
+* Critico
+* Usuario
 ¿Qué acciones puede realizar cada usuario?
 Admin
 Crear registros de películas
