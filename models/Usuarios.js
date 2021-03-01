@@ -3,13 +3,16 @@
 // Clase que representa al "súper usuario" y sus descendencias
 
 class Usuario{
-    constructor(id, nombre, apellido, genero, tipo_usuario, edad){
+    constructor(id, nombre, apellido, genero, tipo, edad, email, password, telefono){
         this.id = id; // ID
         this.nombre = nombre; // Nombre del cliente
         this.apellido = apellido; //Apellido cliente
         this.genero = genero; // Genero del cliente
-        this.tipo_usuario = tipo_usuario; // Tipo Usuario del cliente
-        this.edad = edad; // Edad del cliente    \
+        this.tipo = tipo; // Tipo Usuario del cliente
+        this.edad = edad; // Edad del cliente    
+        this.email = email;
+        this.password = password;
+        this.telefono = telefono;
 
     }
         guardar() {
@@ -28,3 +31,5 @@ class Usuario{
             //función para modificar propiedades de un registro
         }
 }
+
+module.exports = Usuario;

@@ -7,6 +7,7 @@ router.get('/', (req, res)=>{
 });
 
 router.use('/criticas', require('./criticas'));
+router.use('/usuarios', require('./usuarios'))
 
 /* con el método use de nuestro router estamos indicando 
 * que en la ruta 'v1/critiacs' estarán anidadas las rutas 
