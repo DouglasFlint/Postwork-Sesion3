@@ -32,3 +32,5 @@ class Critica {
     }
 
 }
+
+module.exports = Critica;
