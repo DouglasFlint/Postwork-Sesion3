@@ -8,10 +8,9 @@ class Pelicula {
 		this.id = id; //ID de la película
 		this.duracion = duracion; //duracion de la película
 		this.genero = genero; // genero de la película
-		this.calificacion = calificación; //calificaciones otorgadas por los usuarios
 		this.sinopsis = sinopsis; //descripcion de la película
 		this.director = director; //director de la película
-		this.año = año; //año de estreno de la película
+		this.estreno = estreno; //año de estreno de la película
 	}
 
 	guardar() {
