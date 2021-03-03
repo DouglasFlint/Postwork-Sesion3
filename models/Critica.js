@@ -2,11 +2,12 @@
 
 /** Clase que representa la critica que será otorgada por el critico */
 class Critica {
-	constructor(id_critica, id_usuario, nombre_pelicula, reseña, calificacion){
-        this.id_critica = id_critica; // id unico de la reseña
-        this.id_usuario = id_usuario // id unico del usuario que esta otorgando la critica
-        this.nombre_pelicula = nombre_pelicula // nombre de la pelicula a la que se le otorga la critica
-		this.reseña = reseña; // reseña de la pelicula
+	constructor(idCritica, idUsuario, idPelicula, nombrePelicula, reseña, calificacion){
+        this.idCritica = idCritica; // id unico de la reseña
+        this.idUsuario = idUsuario // id unico del usuario que esta otorgando la critica
+        this.idPelicula = idPelicula // id unico de la pelicula que se va a hacer una reseña
+        this.nombrePelicula = nombrePelicula // nombre de la pelicula a la que se le otorga la critica
+		this.comentario = comentario; // reseña de la pelicula
 		this.calificacion = calificacion; // calificacion de 0 a 5 sobre la pelicula
     }
     

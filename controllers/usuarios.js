@@ -4,7 +4,7 @@ Simulando la respuesta CRUD de objetos Usuario
 
 // importamos la clase de Usuario
 
-const usuario = require('../models/Usuarios')
+const usuario = require('../models/Usuario')
 
 function crearUsuario(req, res){
     // Inicializamos un nuevo usuario extendiendo desde la clase Usuario
