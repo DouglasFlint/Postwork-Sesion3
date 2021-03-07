@@ -1,0 +1,310 @@
+{
+    "_id": {
+        "$oid": "60442903a0a07f30cf3a7dcb"
+    },
+    "nombre": "Avatar",
+    "duracion": 100,
+    "genero": "accion",
+    "sinopsis": "En un exuberante planeta llamado Pandora viven los Na'vi, seres que aparentan ser primitivos pero que en realidad son muy evolucionados. Debido a que el ambiente de Pandora es venenoso, los híbridos humanos/Na'vi, llamados Avatares, están relacionados con las mentes humanas, lo que les permite moverse libremente por Pandora. Jake Sully, un exinfante de marina paralítico se transforma a través de un Avatar, y se enamora de una mujer Na'vi.",
+    "director": "James Cameron",
+    "estreno": 2012,
+    "poster": "https://pics.filmaffinity.com/Avatar-208925608-large.jpgg",
+    "idCriticas": [],
+    "calPromedio": "" 
+}
+
+
+{
+    "_id": {
+        "$oid": "60442f87d16eecfbe78cc4fd"
+    },
+    "nombre": "Diario de una pasion",
+    "duracion": 124,
+    "genero": "romance",
+    "sinopsis": "En una residencia de ancianos, un hombre (James Garner) lee a una mujer (Gena Rowlands) una historia de amor escrita en su viejo cuaderno de notas. Es la historia de Noah Calhoun (Ryan Gosling) y Allie Hamilton (Rachel McAdams), dos jóvenes adolescentes de Carolina del Norte que, a pesar de vivir en dos ambientes sociales muy diferentes, se enamoraron profundamente y pasaron juntos un verano inolvidable, antes de ser separados, primero por sus padres, y más tarde por la guerra.",
+    "director": "Nick Cassavetes",
+    "estreno": 2004,
+    "poster": "https://pics.filmaffinity.com/the_notebook-565006977-mmed.jpg",
+    "idCriticas": [],
+    "calPromedio": "" 
+}
+
+
+{
+    "_id": {
+        "$oid": "6044320dd16eecfbe78cc4ff"
+    },
+    "nombre": "27 vestidos",
+    "duracion": 127,
+    "genero": "romance",
+    "sinopsis": "Jane (Katherine Heigl), la eterna dama de honor -lo ha sido hasta 27 veces- pero nunca la novia, debe hacer frente a su peor pesadilla cuando su hermana (Malin Akerman) se compromete con el hombre de sus sueños. A Jane le encanta acudir a bodas y ayudar a la novia en su día más especial. Está enamorada de su jefe (Edward Burns), pero el día que se decide a confesarle su amor, su atractiva y caprichosa hermana, a la que siempre ha cuidado, entra en escena.",
+    "director": "Anne Fletchers",
+    "estreno": 2008,
+    "poster": "https://pics.filmaffinity.com/27_dresses-242836094-mmed.jpg",
+    "idCriticas": [{"$oid": "6044320dd16eecfbe78cc4ff"}],
+    "calPromedio": 4.6
+}
+
+{
+    "_id": {
+        "$oid": "6044332fd16eecfbe78cc500"
+    },
+    "nombre": "El gran Showman",
+    "duracion": 105,
+    "genero": "musical",
+    "sinopsis": "Biopic sobre Phineas Taylor Barnum (1810-1891), un empresario circense estadounidense que fundó el Ringling Bros. and Barnum & Bailey Circus, conocido como el mayor espectáculo en la tierra.",
+    "director": "Michael Gracey",
+    "estreno": 2017,
+    "poster": "https://pics.filmaffinity.com/the_greatest_showman-859484211-mmed.jpg",
+    "idCriticas": [],
+    "calPromedio": ""    
+}
+
+
+{
+    "_id": {
+        "$oid": "604434a2d16eecfbe78cc501"
+    },
+    "nombre": "La La Land",
+    "duracion": 127,
+    "genero": "musical",
+    "sinopsis": "Mia (Emma Stone), una joven aspirante a actriz que trabaja como camarera mientras acude a castings, y Sebastian (Ryan Gosling), un pianista de jazz que se gana la vida tocando en sórdidos tugurios, se enamoran, pero su gran ambición por llegar a la cima en sus carreras artísticas amenaza con separarlos.",
+    "director": "Damien Chazelle",
+    "estreno": 2016,
+    "poster": "https://pics.filmaffinity.com/la_la_land-262021831-mmed.jpg",
+    "idCriticas": [],
+    "calPromedio": "" 
+}
+
+
+{
+    "_id": {
+        "$oid": "60443607d16eecfbe78cc502"
+    },
+    "nombre": "10 cosas que odio de ti",
+    "duracion": 97,
+    "genero": "romance",
+    "sinopsis": "Las hermanas Stratford son muy distintas. La guapa y popular Bianca nunca ha salido con un chico, y Kat, su hermana mayor, es una bruja con muy mal genio, y algo arisca, que se ha propuesto rechazar a cualquier chico que demuestre el más mínimo interés por ella. Desgraciadamente, el estricto reglamento que rige el hogar de los Stratford prohibe a Blanca tener novio hasta que su insoportable hermana tenga uno; situación que parece más que improbable teniendo en cuenta que Kat lleva una vida social desastrosa. Blanca está desesperada por ir al baile de fin de curso. Pero su pretendiente, Cameron, guarda una sorpresa...",
+    "director": "Gil Junger",
+    "estreno": 1999,
+    "poster": "https://pics.filmaffinity.com/10_things_i_hate_about_you-228397540-mmed.jpg",
+    "idCriticas": [],
+    "calPromedio": ""
+}
+
+
+
+{
+    "_id": {
+        "$oid": "604437d5d16eecfbe78cc503"
+    },
+    "nombre": "El stand de los besos",
+    "duracion": 105,
+    "genero": "romance",
+    "sinopsis": "A pesar de varios intentos, Elle Evans (Joey King) jamás ha sido besada. Esta estudiante de preparatoria de 16 años, decide poner un stand de besos, para recaudar fondos, sin imaginar que Noah (Jacob Elordi) -el chico más guapo de la escuela y su eterno crush- terminaría besándola. Después de besarse en el stand de los besos, ambos sostienen un romance secreto, pero el poblema -más allá de estarse besando con el chico más popular- radica en que es el hermano mayor de su mejor amigo, Lee (Joel Courtney). ",
+    "director": "Vince Marcello",
+    "estreno": 2018,
+    "poster": "https://mx.web.img2.acsta.net/f_png/c_310_420/o_logo-netflix-n.png_5_se/pictures/18/05/04/15/03/2133793.jpg",
+    "idCriticas": [],
+    "calPromedio": ""    
+}
+
+
+
+{
+    "_id": {
+        "$oid": "60443924d16eecfbe78cc504"
+    },
+    "nombre": "Lo que el viento se llevo",
+    "duracion": 238,
+    "genero": "romance",
+    "sinopsis": "Este drama épico de la Guerra Civil se centra en la vida de la petulante belleza sureña Scarlett O'Hara. Desde la idílica hospitalidad de su gran plantación, la película narra su supervivencia a través de la historia trágica del Sur durante la Guerra Civil y la Reconstrucción, y sus enredados amorosos con Ashley Wilkes y Rhett Butler.",
+    "director": "Victor Fleming",
+    "estreno": 1941,
+    "poster": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSIcUXfxJaERhOlbxkkIFCkAmwr3iZPMPNtsCWghHNyox99I7Qu",
+    "idCriticas": [],
+    "calPromedio": ""     
+}
+
+
+{
+    "_id": {
+        "$oid": "60443a88d16eecfbe78cc505"
+    },
+    "nombre": "Vaselina",
+    "duracion": 111,
+    "genero": "musical",
+    "sinopsis": "El rebelde Danny Zuko y la inocente australiana Sandy mantienen un romance durante las vacaciones, creyendo que no se volverán a ver; sin embargo, para sorpresa de ambos, se reencuentran en la escuela secundaria al empezar el nuevo curso.",
+    "director": "Randal Kleiser",
+    "estreno": 1978,
+    "poster": "https://pics.filmaffinity.com/Grease-949856059-large.jpg",
+    "idCriticas": [],
+    "calPromedio": ""
+}
+
+
+
+{
+    "_id": {
+        "$oid": "60443bdad16eecfbe78cc506"
+    },
+    "nombre": "Mamma Mia!",
+    "duracion": 110,
+    "genero": "musical",
+    "sinopsis": "Donna, una hotelera independiente de las islas griegas, prepara la boda de su hija con la ayuda de dos viejos amigos. Mientras tanto, Sophie, la alegre hija de Donna, tiene su propio plan. Invita a la boda a tres hombres del pasado de su madre con la esperanza de conocer a su padre biológico para que la acompañe al altar.",
+    "director": "Phyllida Lloyd",
+    "estreno": 2008,
+    "poster": "https://pics.filmaffinity.com/mamma_mia-326443202-large.jpg",
+    "idCriticas": [],
+    "calPromedio": ""
+}
+
+
+{
+    "_id": {
+        "$oid": "60443cced16eecfbe78cc507"
+    },
+    "nombre": "Los miserables",
+    "duracion": 160,
+    "genero": "musical",
+    "sinopsis": "Después de 19 años como prisionero, Jean Valjean es liberado por Javert, el oficial a cargo de la fuerza de trabajo de la prisión. Valjean viola su libertad y más tarde usa el dinero robado para reinventarse como alcalde y dueño de una fábrica. Por su parte, Javert promete llevar a Valjean de vuelta a la cárcel. Ocho años después, Valjean se convierte en el guardián de un niño llamado Cosette tras la muerte de su madre, pero la persecución de Javert significa que la paz tardará en llegar.",
+    "director": "Tom Hooper",
+    "estreno": 2013,
+    "poster": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTDHVQodB04NeRJO8eWi8UxTelv6Oj4DI1z1eYBrv9_DOAhh3_3",
+    "idCriticas": [],
+    "calPromedio": ""
+}
+
+
+{
+    "_id": {
+        "$oid": "60443e63d16eecfbe78cc509"
+    },
+    "nombre": "Paulina",
+    "apellido": "Quintero",
+    "genero": "m",
+    "edad": 23,
+    "email": "paulina.mucito@gmail.com",
+    "password": "password",
+    "tipo": 0    
+}
+
+
+
+{
+    "_id": {
+        "$oid": "60443e63d16eecfbe78cc509"
+    },
+    "nombre": "Ricardo",
+    "apellido": "Lopez",
+    "genero": "h",
+    "edad": 45,
+    "email": "richrz.lopz@gmail.com",
+    "password": "ricardo123",
+    "tipo": 3    
+}
+
+
+
+{
+    "_id": {
+        "$oid": "60443f39d16eecfbe78cc50b"
+    },
+    "nombre": "Carlos",
+    "apellido": "Jimenez",
+    "genero": "h",
+    "edad": 32,
+    "email": "charlitos23_@hotmail.com",
+    "password": "charlitos12",
+    "tipo": 2    
+}
+
+
+{
+    "_id": {
+        "$oid": "60443fdbd16eecfbe78cc50c"
+    },
+    "nombre": "Ana",
+    "apellido": "Robles",
+    "genero": "m",
+    "edad": 12,
+    "email": "annyrob@outlok.com",
+    "password": "annyrob",
+    "tipo": 3 
+}
+
+
+
+{
+    "_id": {
+        "$oid": "60444d53d16eecfbe78cc519"
+    },
+    "idUsuario": {
+      "$oid": "60443f39d16eecfbe78cc50b"
+    },
+
+    "idPelicula": {
+      "$oid": "6044320dd16eecfbe78cc4ff"
+    },
+    "nombrePelicula": "27 vestidos",
+    "comentario": "Me gusto mucho esta pelicula, creo que tiene un poco de todo, en lo personal Katherine Heigl es una de mis actrices favoritas y en cuanto a esta pelicula no fue la excepcion, esta llena de comedia y romance, muy recomendable para todas las edades y para un domingo familiar esta excelente.",
+    "calificacion": 4.6    
+    
+}
+
+
+{
+    "_id": {
+        "$oid": "60445133d16eecfbe78cc51b"
+    },
+    "idUsuario": {
+      "$oid": "60443f39d16eecfbe78cc50b"
+    },
+
+    "idPelicula": {
+      "$oid": "60443a88d16eecfbe78cc505"
+    },
+    "nombrePelicula": "Vaselina",
+    "comentario": "Esta pelicula es un clasico de clasicos, si no la has visto es porque seguramente has estado encerrado en una cueva toda tu vida. Es super divertida, un musical muy completo y bueno",
+    "calificacion": 4.2 
+}
+
+
+{
+    "_id": {
+        "$oid": "604451e2d16eecfbe78cc51c"
+    },
+    "idUsuario": {
+      "$oid": "60443f39d16eecfbe78cc50b"
+    },
+
+    "idPelicula": {
+      "$oid": "60443cced16eecfbe78cc507"
+    },
+    "nombrePelicula": "Los miserables",
+    "comentario": "Si eres un amante de los clasicos esta es una pelicula para ti, tiene actores muy completos como Hugh Jackman y Anne Hattaway, muy buena pelicula, se vive un drama intenso y es todo un clasico que no te puedes perder.",
+    "calificacion": 4.7 
+}
+
+
+{
+    "_id": {
+        "$oid": "604453c8d16eecfbe78cc51d"
+    },
+    "idUsuario": {
+      "$oid": "60443f39d16eecfbe78cc50b"
+    },
+
+    "idPelicula": {
+      "$oid": "60442903a0a07f30cf3a7dcb"
+    },
+    "nombrePelicula": "Avatar",
+    "comentario": "Imperdible, un gran exito de James Cameron. Sale con esta gran pelicula de ciencia ficcion a retratar todo un mundo nuevo, desde sus inicios con tiburon hasta esta tuvo un gran avance. Muy buena pelicla",
+    "calificacion": 4.5 
+}
+
+
+
+
+
+
