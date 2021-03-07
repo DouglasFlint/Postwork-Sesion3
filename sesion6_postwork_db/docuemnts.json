@@ -318,18 +318,17 @@
     "calPromedio": 4.3
 }
 
-{
-    "nombre": "El Faro",
-    "duracion": 109,
-    "genero": "terror",
-    "sinopsis": "El Faro cuenta la historia de un viejo lobo de mar (Willem Dafoe) que pasa los últimos años de su vida trabajando como farero y en su nueva misión, en una remotísima isla, estará acompañado por un aprendiz (Robert Pattinson).",
-    "director": "Robert Eggers",
-    "estreno": 2019,
-    "poster": "http://es.web.img2.acsta.net/pictures/19/10/28/16/45/5520153.jpg",
-    "idCriticas": [],
-    "calPromedio": ""
+{"_id":{"$oid":"60443d8cbc2f210b982295a1"},
+    "nombre":"El Faro",
+    "duracion":109,
+    "genero":"terror",
+    "sinopsis":"El Faro cuenta la historia de un viejo lobo de mar (Willem Dafoe) que pasa los últimos años de su vida trabajando como farero y en su nueva misión, en una remotísima isla, estará acompañado por un aprendiz (Robert Pattinson).",
+    "director":"Robert Eggers",
+    "estreno":2019,
+    "poster":"http://es.web.img2.acsta.net/pictures/19/10/28/16/45/5520153.jpg",
+    "idCriticas":[],
+    "calPromedio":""
 }
-
 {
     "nombre": "Midsommar",
     "duracion": 147,
