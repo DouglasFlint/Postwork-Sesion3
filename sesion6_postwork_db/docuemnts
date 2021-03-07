@@ -304,7 +304,196 @@
 }
 
 
+{
+    "nombre": "La Bruja",
+    "duracion": 93,
+    "genero": "terror",
+    "sinopsis": "Nueva Inglaterra, año 1630. William (Ralph Ineson) es el padre de una familia de colonos cristiana, que son excomulgados de su congregación en una plantación. William ha de establecerse en pleno bosque con su esposa y sus cinco hijos. Según las creencias populares, este bosque está controlado por un mal sobrenatural.",
+    "director": "Robert Eggers",
+    "estreno": 2016,
+    "poster": "http://es.web.img2.acsta.net/pictures/16/02/02/12/33/062603.jpg",
+    "idCriticas": {
+        "$oid": "604450cebc2f210b982295b2"
+    },
+    "calPromedio": 4.3
+}
+
+{
+    "nombre": "El Faro",
+    "duracion": 109,
+    "genero": "terror",
+    "sinopsis": "El Faro cuenta la historia de un viejo lobo de mar (Willem Dafoe) que pasa los últimos años de su vida trabajando como farero y en su nueva misión, en una remotísima isla, estará acompañado por un aprendiz (Robert Pattinson).",
+    "director": "Robert Eggers",
+    "estreno": 2019,
+    "poster": "http://es.web.img2.acsta.net/pictures/19/10/28/16/45/5520153.jpg",
+    "idCriticas": [],
+    "calPromedio": ""
+}
+
+{
+    "nombre": "Midsommar",
+    "duracion": 147,
+    "genero": "terror",
+    "sinopsis": "Una pareja de estadounidenses acude con unos amigos a Midsommar, un festival de verano que se celebra cada 90 años en una aldea remota de Suecia. Sin embargo, lo que parecía ser unas vacaciones de ensueño se tuerce un poco cuando los aldeanos les invitan a participar en sus perturbadoras actividades festivas.",
+    "director": "Ari Aster",
+    "estreno": 2019,
+    "poster": "https://pics.filmaffinity.com/Midsommar-578791309-large.jpg",
+    "idCriticas": [],
+    "calPromedio": ""
+}
+
+{
+    "nombre": "Hereditary",
+    "duracion": 127,
+    "genero": "terror",
+    "sinopsis": "Hereditary es la historia de una secta liderada por la madre de Annie (Hellen), cuyo propósito es invocar a un demonio antiguo, Paimon. El demonio necesita un huésped masculino para manifestarse al completo, puesto que uno femenino no le gusta, y debe pertenecer al linaje de Hellen.",
+    "director": "Ari Aster",
+    "estreno": 2018,
+    "poster": "https://image.tmdb.org/t/p/w1280//nbmTaIIusXrQQc3opclmIdB6dwx.jpg",
+    "idCriticas": [],
+    "calPromedio": ""
+}
+
+{
+    "nombre": "Possessor",
+    "duracion": 104,
+    "genero": "terror",
+    "sinopsis": "Segundo largometraje de Brandon Cronenberg el cual narra la historia de Tasya Vos, una agente especial que trabaja para una organización que cumple encargos para gente poderosa que requiere asesinar personas en beneficio propio sin dejar evidencia.",
+    "director": "Brandon Cronenberg",
+    "estreno": 2021,
+    "poster": "https://pics.filmaffinity.com/Possessor-364771251-large.jpg",
+    "idCriticas": [],
+    "calPromedio": ""
+}
+
+{
+    "nombre": "Get Duked!",
+    "duracion": 87,
+    "genero": "comedia",
+    "sinopsis": "Comedia inglesa sobre cuatro jóvenes (tres de ellos poco menos que delincuentes) que deben participar en una aventura en las zonas montañosas de Escocia, con el objetivo de alcanzar la meta y obtener un codiciado premio, al menos para uno de ellos (el más responsable, obviamente).",
+    "director": "Ninian Doff",
+    "estreno": 2019,
+    "poster": "https://pics.filmaffinity.com/Get_Duked-488717284-large.jpg",
+    "idCriticas": [],
+    "calPromedio": ""
+}
+
+{
+    "nombre": "Superbad",
+    "duracion": 113,
+    "genero": "comedia",
+    "sinopsis": "Con la esperanza de tener sexo antes de iniciar la universidad, Seth y Evan intentan comprar alcohol para un fiestón, lo que desencadena una alocada serie de desventuras. Judd Apatow produjo esta genial comedia protagonizada por Jonah Hill, Michael Cera, Bill Hader, Emma Stone y Seth Rogen.",
+    "director": "Greg Mottola",
+    "estreno": 2007,
+    "poster": "https://pics.filmaffinity.com/Supersalidos-743461969-large.jpg",
+    "idCriticas": {
+        "$oid": "6044566cbc2f210b982295b9"
+    },
+    "calPromedio": 3.7
+}
+
+{
+    "nombre": "Proyecto X",
+    "duracion": 94,
+    "genero": "comedia",
+    "sinopsis": "'Project X' sigue a tres anónimos estudiantes del último curso del instituto que quieren darse a conocer. Su idea es inocente: vamos a montar una fiesta que nadie pueda olvidar... pero nada podía prepararles para esta fiesta.",
+    "director": "Nima Nourizadeh",
+    "estreno": 2012,
+    "poster": "https://pics.filmaffinity.com/Proyecto_X-393876705-large.jpg",
+    "idCriticas": [],
+    "calPromedio": ""
+}
+
+{
+    "nombre": "¿Qué pasó ayer?",
+    "duracion": 100,
+    "genero": "comedia",
+    "sinopsis": "Historia de una desmadrada despedida de soltero en la que el novio y tres amigos se montan una gran juerga en Las Vegas. Como era de esperar, a la mañana siguiente tienen una resaca tan monumental que no pueden recordar nada de lo ocurrido la noche anterior. Lo más extraordinario es que el novio ha desaparecido y en la suite del hotel se encuentran un tigre y un bebé.",
+    "director": "Todd Phillips",
+    "estreno": 2009,
+    "poster": "https://pics.filmaffinity.com/A_Qu_pas_ayer-567756276-large.jpg",
+    "idCriticas": {
+        "$oid": "604450bebc2f210b982295b1"
+    },
+    "calPromedio": 3.7
+}
+
+{
+    "nombre": "Borat",
+    "duracion": 84,
+    "genero": "comedia",
+    "sinopsis": "Sacha Baron Cohen, el peculiar protagonista de Ali G anda suelto, interpreta a Borat, un reportero de Kazajistán. Por orden de su gobierno, el periodista va a Estados Unidos para rodar un documental pedagógico, que debe recoger las mejores enseñanzas de los USA para que su país las aproveche. Pero el trabajo no será tan fácil como parece...",
+    "director": "Larry Charles",
+    "estreno": 2006,
+    "poster": "https://pics.filmaffinity.com/Borat-512396849-large.jpg",
+    "idCriticas": [],
+    "calPromedio": ""
+}
+
+{
+    "nombre": "Emilio",
+    "apellido": "Pillado",
+    "genero": "h",
+    "edad": 23,
+    "email": "emipillado@gmail.com",
+    "password": "passworduno",
+    "tipo": 0
+}
+
+{
+    "nombre": "Daniel",
+    "apellido": "Lara",
+    "genero": "h",
+    "edad": 25,
+    "email": "daniellara@gmail.com",
+    "password": "passworddos",
+    "tipo": 1
+}
+
+{
+    "nombre": "Vanessa",
+    "apellido": "Salazar",
+    "genero": "m",
+    "edad": 46,
+    "email": "vanesalaza@gmail.com",
+    "password": "passwordtres",
+    "tipo": 3
+}
 
 
+{
+    "idUsuario": {
+        "$oid": "60443f99bc2f210b982295ab"
+    },
+    "idPelicula": {
+        "$oid": "60443d79bc2f210b982295a0"
+    },
+    "nombrePelicula": "La Bruja",
+    "comentario": "Egger reinventa el terror psicologico con esre thriller. Lleva al limite la expectativa y emociones del publico y asusta en demasia sin tener que usar sustos genericos.",
+    "calificacion": 5
+}
+
+{
+    "idUsuario": {
+        "$oid": "60443fa7bc2f210b982295ac"
+    },
+    "idPelicula": {
+        "$oid": "60443e2cbc2f210b982295a8"
+    },
+    "nombrePelicula": "Que paso ayer?",
+    "comentario": "Comedia super divertida apata para ver con toda la famiila aunque tiene un poco de humor negro esta pelicula te hace reir a carcajadas desde el comienzo",
+    "calificacion": 3.7
+}
 
 
+{
+    "idUsuario": {
+        "$oid": "60443f99bc2f210b982295ab"
+    },
+    "idPelicula": {
+        "$oid": "60443e10bc2f210b982295a6"
+    },
+    "nombrePelicula": "SuperBad",
+    "comentario": "Pelicula que marco un parte-aguas para las peliculas de comedia por su humor tan pesado y situaciones tan explicitas.",
+    "calificacion": 4.8
+}
