@@ -1,10 +1,18 @@
 // Estructura del CRUD
 const router = require('express').Router();
-const { crearPelicula, obtenerPeliculas, modificarPelicula, eliminarPelicula } = require('../controllers/peliculas');
+const {
+	crearPelicula,
+	obtenerPeliculas,
+	obtenerPeliculaPorID,
+	modificarPelicula,
+	eliminarPelicula
+} = require('../controllers/peliculas');
 
-router.get('/', obtenerPeliculas);
+router.get('/', obtenerPeliculas); //admite query params
 router.post('/', crearPelicula);
-router.put('/:id', modificarPelicula);
+
+router.get('/:id', obtenerPeliculaPorID);
 router.delete('/:id', eliminarPelicula);
+router.put('/:id', modificarPelicula);
 
 module.exports = router;
