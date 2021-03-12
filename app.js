@@ -2,9 +2,27 @@
 var express = require('express'),
 	bodyParser = require('body-parser'),
 	cors = require('cors');
-
+const mongoose = require('mongoose');
+require('dotenv').config();
 // Objeto global de la app
 var app = express();
+
+/*********************** Mongoose Configuration *******************************/
+
+mongoose
+	.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+	.then(() => {
+		console.log('Conectado a MongoDB');
+	})
+	.catch((err) => {
+		return console.error(err);
+	});
+
+mongoose.set('debug', true);
+
+// Aquí se importarán los modelos
+require('./models/Pelicula');
+/*********************** Mongoose Configuration *******************************/
 
 // configuración de middlewares
 app.use(cors());

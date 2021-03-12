@@ -1,11 +1,10 @@
 //Pelicula.js
-
-const mongosse = require('mongoose');
+const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
 
 //Definiendo cada campo con el tipo de dato y validaciones
 
-const PeliculaSchema = new mongosse.Schema(
+const PeliculaSchema = new mongoose.Schema(
 	{
 		nombre: {
 			type: String,
@@ -13,13 +12,11 @@ const PeliculaSchema = new mongosse.Schema(
 		},
 		duracion: {
 			type: Number,
-			required: true,
-			index: true
+			required: true
 		},
 		genero: {
 			type: String,
-			required: true,
-			index: true
+			required: true
 		},
 		sinopsis: {
 			type: String,
@@ -31,22 +28,55 @@ const PeliculaSchema = new mongosse.Schema(
 		},
 		estreno: {
 			type: Number,
-			required: true,
-			index: true
+			required: true
 		},
-		calificacionProm: {
+		poster: {
+			type: String,
+			required: true
+		},
+		idCriticas: {
+			type: Array,
+			default: []
+		},
+		calPromedio: {
 			type: Number,
+			default: 0,
 			min: 0,
-			max: 5,
-			index: true
+			max: 5
 		}
 	},
-	{ timestamps: true }
+	{
+		timestamps: true,
+		collection: 'Peliculas' //Nombre existente de la colección de películas
+	}
 );
+
+PeliculaSchema.statics.conFechaDeEstreno = (fechaMin, fechaMax) => {
+	// console.log('Pelicula Schema this context');
+	console.log(this);
+	if (fechaMin && fechaMax) {
+		console.log(this);
+		this.and([
+			{
+				estreno: {
+					$gte: fechaMin
+				}
+			},
+			{
+				estreno: {
+					$lte: fechaMax
+				}
+			}
+		]);
+		console.log(this);
+		return;
+	}
+};
 
 // usando plugin de validación para que no se repitan correos ni usernames
 PeliculaSchema.plugin(uniqueValidator, { message: 'Ya existe' });
-mongoose.model('Pelicula', PeliculaSchema); //Define el modelo Pelicula, utilizando el esquema PeliculaSchema.
+//Define el modelo Pelicula, utilizando el esquema PeliculaSchema.
+mongoose.model('Pelicula', PeliculaSchema);
 
 // // Clase que represneta un registro de película que sera modificado por varios usuarios.
 
