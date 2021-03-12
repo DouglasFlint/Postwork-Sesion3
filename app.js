@@ -21,6 +21,8 @@ mongoose
 mongoose.set('debug', true);
 
 // Aquí se importarán los modelos
+require("./models/Usuario");
+require('./config/passport');
 require('./models/Pelicula');
 /*********************** Mongoose Configuration *******************************/
 
