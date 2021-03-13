@@ -1,37 +1,37 @@
-// Critica.js
+//Critica.js
+const mongoose = require('mongoose');
+const uniqueValidator = require('mongoose-unique-validator');
 
-/** Clase que representa la critica que será otorgada por el critico */
-class Critica {
-	constructor(idCritica, idUsuario, idPelicula, nombrePelicula, reseña, calificacion){
-        this.idCritica = idCritica; // id unico de la reseña
-        this.idUsuario = idUsuario // id unico del usuario que esta otorgando la critica
-        this.idPelicula = idPelicula // id unico de la pelicula que se va a hacer una reseña
-        this.nombrePelicula = nombrePelicula // nombre de la pelicula a la que se le otorga la critica
-		this.comentario = comentario; // reseña de la pelicula
-		this.calificacion = calificacion; // calificacion de 0 a 5 sobre la pelicula
-    }
-    
+//Definiendo cada campo con el tipo de dato y validaciones
+const CriticaSchema = new mongoose.Schema(
+	{
+		idUsuario: String,
+		idPelicula: {
+			type: String,
+			required: true
+		},
+		nombrePelicula: {
+			type: String,
+			required: true
+		},
+		comentario: {
+			type: String,
+			default: ''
+		},
+		calificacion: {
+			type: Number,
+			min: 0,
+			max: 5,
+			required: true
+		}
+	},
+	{
+		timestamps: true,
+		collection: 'Criticas' //Nombre existente de la colección de películas
+	}
+);
 
-    agregarCritica() {
-        //El usuario agrega una critica a determinada pelicula
-    }
-
-    listarCriticas() {
-        // El usuario obtiene las peliculas
-    }
-
-    modificarCritica() {
-        // El usuario modifica los datos de una critica existente
-    }
-
-    eliminarCritica() {
-        // El usuario elimina una determinada critica
-    }
-
-    obtenerPromedio() {
-        // El usuario obtiene el promedio de la calificacion de cierta pelicula
-    }
-
-}
-
-module.exports = Critica;
+// usando plugin de validación para que no se repitan correos ni usernames
+CriticaSchema.plugin(uniqueValidator, { message: 'Ya existe' });
+//Define el modelo Pelicula, utilizando el esquema CriticaSchema.
+mongoose.model('Critica', CriticaSchema);
