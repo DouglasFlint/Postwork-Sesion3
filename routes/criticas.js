@@ -1,15 +1,12 @@
 // Estructura del CRUD
 const router = require('express').Router();
-const {
-  crearCritica,
-  obtenerCriticas,
-  modificarCritica,
-  eliminarCritica
-} = require('../controllers/criticas')
+const { crearCritica, obtenerCriticas, modificarCritica, eliminarCritica } = require('../controllers/criticas');
 
-router.get('/', obtenerCriticas)
-router.post('/', crearCritica)
-router.put('/:id', modificarCritica)
-router.delete('/:id', eliminarCritica)
+const auth = require('./auth');
+
+router.get('/:peliculaID', auth.opcional, obtenerCriticas); //Obtener las críticas de una película
+router.post('/', auth.requerido, crearCritica); //Crear una crítica
+router.put('/:id', auth.requerido, modificarCritica); //Modificar una crítica
+router.delete('/:id', auth.requerido, eliminarCritica); //Eliminar una crítica
 
 module.exports = router;
