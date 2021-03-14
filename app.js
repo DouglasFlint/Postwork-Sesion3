@@ -20,9 +20,12 @@ mongoose
 
 mongoose.set('debug', true);
 
-// Aquí se importarán los modelos
-require('./models/Pelicula');
 /*********************** Mongoose Configuration *******************************/
+// Aquí se importarán los modelos
+require('./models/Usuario');
+require('./config/passport');
+require('./models/Pelicula');
+require('./models/Critica');
 
 // configuración de middlewares
 app.use(cors());

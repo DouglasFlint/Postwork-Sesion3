@@ -1,0 +1,677 @@
+[
+    {
+    "_id": {
+        "$oid": "60442903a0a07f30cf3a7dcb"
+    },
+    "nombre": "Avatar",
+    "duracion": 100,
+    "genero": "accion",
+    "sinopsis": "En un exuberante planeta llamado Pandora viven los Na'vi, seres que aparentan ser primitivos pero que en realidad son muy evolucionados. Debido a que el ambiente de Pandora es venenoso, los híbridos humanos/Na'vi, llamados Avatares, están relacionados con las mentes humanas, lo que les permite moverse libremente por Pandora. Jake Sully, un exinfante de marina paralítico se transforma a través de un Avatar, y se enamora de una mujer Na'vi.",
+    "director": "James Cameron",
+    "estreno": 2012,
+    "poster": "https://pics.filmaffinity.com/Avatar-208925608-large.jpgg",
+    "idCriticas": [],
+    "calPromedio": "" 
+},
+
+
+{
+    "_id": {
+        "$oid": "60442f87d16eecfbe78cc4fd"
+    },
+    "nombre": "Diario de una pasion",
+    "duracion": 124,
+    "genero": "romance",
+    "sinopsis": "En una residencia de ancianos, un hombre (James Garner) lee a una mujer (Gena Rowlands) una historia de amor escrita en su viejo cuaderno de notas. Es la historia de Noah Calhoun (Ryan Gosling) y Allie Hamilton (Rachel McAdams), dos jóvenes adolescentes de Carolina del Norte que, a pesar de vivir en dos ambientes sociales muy diferentes, se enamoraron profundamente y pasaron juntos un verano inolvidable, antes de ser separados, primero por sus padres, y más tarde por la guerra.",
+    "director": "Nick Cassavetes",
+    "estreno": 2004,
+    "poster": "https://pics.filmaffinity.com/the_notebook-565006977-mmed.jpg",
+    "idCriticas": [],
+    "calPromedio": "" 
+},
+
+
+{
+    "_id": {
+        "$oid": "6044320dd16eecfbe78cc4ff"
+    },
+    "nombre": "27 vestidos",
+    "duracion": 127,
+    "genero": "romance",
+    "sinopsis": "Jane (Katherine Heigl), la eterna dama de honor -lo ha sido hasta 27 veces- pero nunca la novia, debe hacer frente a su peor pesadilla cuando su hermana (Malin Akerman) se compromete con el hombre de sus sueños. A Jane le encanta acudir a bodas y ayudar a la novia en su día más especial. Está enamorada de su jefe (Edward Burns), pero el día que se decide a confesarle su amor, su atractiva y caprichosa hermana, a la que siempre ha cuidado, entra en escena.",
+    "director": "Anne Fletchers",
+    "estreno": 2008,
+    "poster": "https://pics.filmaffinity.com/27_dresses-242836094-mmed.jpg",
+    "idCriticas": [{"$oid": "6044320dd16eecfbe78cc4ff"}],
+    "calPromedio": 4.6
+},
+
+{
+    "_id": {
+        "$oid": "6044332fd16eecfbe78cc500"
+    },
+    "nombre": "El gran Showman",
+    "duracion": 105,
+    "genero": "musical",
+    "sinopsis": "Biopic sobre Phineas Taylor Barnum (1810-1891), un empresario circense estadounidense que fundó el Ringling Bros. and Barnum & Bailey Circus, conocido como el mayor espectáculo en la tierra.",
+    "director": "Michael Gracey",
+    "estreno": 2017,
+    "poster": "https://pics.filmaffinity.com/the_greatest_showman-859484211-mmed.jpg",
+    "idCriticas": [],
+    "calPromedio": ""    
+},
+
+
+{
+    "_id": {
+        "$oid": "604434a2d16eecfbe78cc501"
+    },
+    "nombre": "La La Land",
+    "duracion": 127,
+    "genero": "musical",
+    "sinopsis": "Mia (Emma Stone), una joven aspirante a actriz que trabaja como camarera mientras acude a castings, y Sebastian (Ryan Gosling), un pianista de jazz que se gana la vida tocando en sórdidos tugurios, se enamoran, pero su gran ambición por llegar a la cima en sus carreras artísticas amenaza con separarlos.",
+    "director": "Damien Chazelle",
+    "estreno": 2016,
+    "poster": "https://pics.filmaffinity.com/la_la_land-262021831-mmed.jpg",
+    "idCriticas": [],
+    "calPromedio": "" 
+},
+
+
+{
+    "_id": {
+        "$oid": "60443607d16eecfbe78cc502"
+    },
+    "nombre": "10 cosas que odio de ti",
+    "duracion": 97,
+    "genero": "romance",
+    "sinopsis": "Las hermanas Stratford son muy distintas. La guapa y popular Bianca nunca ha salido con un chico, y Kat, su hermana mayor, es una bruja con muy mal genio, y algo arisca, que se ha propuesto rechazar a cualquier chico que demuestre el más mínimo interés por ella. Desgraciadamente, el estricto reglamento que rige el hogar de los Stratford prohibe a Blanca tener novio hasta que su insoportable hermana tenga uno; situación que parece más que improbable teniendo en cuenta que Kat lleva una vida social desastrosa. Blanca está desesperada por ir al baile de fin de curso. Pero su pretendiente, Cameron, guarda una sorpresa...",
+    "director": "Gil Junger",
+    "estreno": 1999,
+    "poster": "https://pics.filmaffinity.com/10_things_i_hate_about_you-228397540-mmed.jpg",
+    "idCriticas": [],
+    "calPromedio": ""
+},
+
+
+
+{
+    "_id": {
+        "$oid": "604437d5d16eecfbe78cc503"
+    },
+    "nombre": "El stand de los besos",
+    "duracion": 105,
+    "genero": "romance",
+    "sinopsis": "A pesar de varios intentos, Elle Evans (Joey King) jamás ha sido besada. Esta estudiante de preparatoria de 16 años, decide poner un stand de besos, para recaudar fondos, sin imaginar que Noah (Jacob Elordi) -el chico más guapo de la escuela y su eterno crush- terminaría besándola. Después de besarse en el stand de los besos, ambos sostienen un romance secreto, pero el poblema -más allá de estarse besando con el chico más popular- radica en que es el hermano mayor de su mejor amigo, Lee (Joel Courtney). ",
+    "director": "Vince Marcello",
+    "estreno": 2018,
+    "poster": "https://mx.web.img2.acsta.net/f_png/c_310_420/o_logo-netflix-n.png_5_se/pictures/18/05/04/15/03/2133793.jpg",
+    "idCriticas": [],
+    "calPromedio": ""    
+},
+
+
+
+{
+    "_id": {
+        "$oid": "60443924d16eecfbe78cc504"
+    },
+    "nombre": "Lo que el viento se llevo",
+    "duracion": 238,
+    "genero": "romance",
+    "sinopsis": "Este drama épico de la Guerra Civil se centra en la vida de la petulante belleza sureña Scarlett O'Hara. Desde la idílica hospitalidad de su gran plantación, la película narra su supervivencia a través de la historia trágica del Sur durante la Guerra Civil y la Reconstrucción, y sus enredados amorosos con Ashley Wilkes y Rhett Butler.",
+    "director": "Victor Fleming",
+    "estreno": 1941,
+    "poster": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSIcUXfxJaERhOlbxkkIFCkAmwr3iZPMPNtsCWghHNyox99I7Qu",
+    "idCriticas": [],
+    "calPromedio": ""     
+},
+
+
+{
+    "_id": {
+        "$oid": "60443a88d16eecfbe78cc505"
+    },
+    "nombre": "Vaselina",
+    "duracion": 111,
+    "genero": "musical",
+    "sinopsis": "El rebelde Danny Zuko y la inocente australiana Sandy mantienen un romance durante las vacaciones, creyendo que no se volverán a ver; sin embargo, para sorpresa de ambos, se reencuentran en la escuela secundaria al empezar el nuevo curso.",
+    "director": "Randal Kleiser",
+    "estreno": 1978,
+    "poster": "https://pics.filmaffinity.com/Grease-949856059-large.jpg",
+    "idCriticas": [],
+    "calPromedio": ""
+},
+
+
+
+{
+    "_id": {
+        "$oid": "60443bdad16eecfbe78cc506"
+    },
+    "nombre": "Mamma Mia!",
+    "duracion": 110,
+    "genero": "musical",
+    "sinopsis": "Donna, una hotelera independiente de las islas griegas, prepara la boda de su hija con la ayuda de dos viejos amigos. Mientras tanto, Sophie, la alegre hija de Donna, tiene su propio plan. Invita a la boda a tres hombres del pasado de su madre con la esperanza de conocer a su padre biológico para que la acompañe al altar.",
+    "director": "Phyllida Lloyd",
+    "estreno": 2008,
+    "poster": "https://pics.filmaffinity.com/mamma_mia-326443202-large.jpg",
+    "idCriticas": [],
+    "calPromedio": ""
+},
+
+
+{
+    "_id": {
+        "$oid": "60443cced16eecfbe78cc507"
+    },
+    "nombre": "Los miserables",
+    "duracion": 160,
+    "genero": "musical",
+    "sinopsis": "Después de 19 años como prisionero, Jean Valjean es liberado por Javert, el oficial a cargo de la fuerza de trabajo de la prisión. Valjean viola su libertad y más tarde usa el dinero robado para reinventarse como alcalde y dueño de una fábrica. Por su parte, Javert promete llevar a Valjean de vuelta a la cárcel. Ocho años después, Valjean se convierte en el guardián de un niño llamado Cosette tras la muerte de su madre, pero la persecución de Javert significa que la paz tardará en llegar.",
+    "director": "Tom Hooper",
+    "estreno": 2013,
+    "poster": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTDHVQodB04NeRJO8eWi8UxTelv6Oj4DI1z1eYBrv9_DOAhh3_3",
+    "idCriticas": [],
+    "calPromedio": ""
+},
+
+
+{
+    "_id": {
+        "$oid": "60443e63d16eecfbe78cc509"
+    },
+    "nombre": "Paulina",
+    "apellido": "Quintero",
+    "genero": "m",
+    "edad": 23,
+    "email": "paulina.mucito@gmail.com",
+    "password": "password",
+    "tipo": 0    
+},
+
+
+
+{
+    "_id": {
+        "$oid": "60443e63d16eecfbe78cc509"
+    },
+    "nombre": "Ricardo",
+    "apellido": "Lopez",
+    "genero": "h",
+    "edad": 45,
+    "email": "richrz.lopz@gmail.com",
+    "password": "ricardo123",
+    "tipo": 3    
+},
+
+
+
+{
+    "_id": {
+        "$oid": "60443f39d16eecfbe78cc50b"
+    },
+    "nombre": "Carlos",
+    "apellido": "Jimenez",
+    "genero": "h",
+    "edad": 32,
+    "email": "charlitos23_@hotmail.com",
+    "password": "charlitos12",
+    "tipo": 2    
+},
+
+
+{
+    "_id": {
+        "$oid": "60443fdbd16eecfbe78cc50c"
+    },
+    "nombre": "Ana",
+    "apellido": "Robles",
+    "genero": "m",
+    "edad": 12,
+    "email": "annyrob@outlok.com",
+    "password": "annyrob",
+    "tipo": 3 
+},
+
+
+
+{
+    "_id": {
+        "$oid": "60444d53d16eecfbe78cc519"
+    },
+    "idUsuario": {
+      "$oid": "60443f39d16eecfbe78cc50b"
+    },
+
+    "idPelicula": {
+      "$oid": "6044320dd16eecfbe78cc4ff"
+    },
+    "nombrePelicula": "27 vestidos",
+    "comentario": "Me gusto mucho esta pelicula, creo que tiene un poco de todo, en lo personal Katherine Heigl es una de mis actrices favoritas y en cuanto a esta pelicula no fue la excepcion, esta llena de comedia y romance, muy recomendable para todas las edades y para un domingo familiar esta excelente.",
+    "calificacion": 4.6    
+    
+},
+
+
+{
+    "_id": {
+        "$oid": "60445133d16eecfbe78cc51b"
+    },
+    "idUsuario": {
+      "$oid": "60443f39d16eecfbe78cc50b"
+    },
+
+    "idPelicula": {
+      "$oid": "60443a88d16eecfbe78cc505"
+    },
+    "nombrePelicula": "Vaselina",
+    "comentario": "Esta pelicula es un clasico de clasicos, si no la has visto es porque seguramente has estado encerrado en una cueva toda tu vida. Es super divertida, un musical muy completo y bueno",
+    "calificacion": 4.2 
+},
+
+
+{
+    "_id": {
+        "$oid": "604451e2d16eecfbe78cc51c"
+    },
+    "idUsuario": {
+      "$oid": "60443f39d16eecfbe78cc50b"
+    },
+
+    "idPelicula": {
+      "$oid": "60443cced16eecfbe78cc507"
+    },
+    "nombrePelicula": "Los miserables",
+    "comentario": "Si eres un amante de los clasicos esta es una pelicula para ti, tiene actores muy completos como Hugh Jackman y Anne Hattaway, muy buena pelicula, se vive un drama intenso y es todo un clasico que no te puedes perder.",
+    "calificacion": 4.7 
+},
+
+
+{
+    "_id": {
+        "$oid": "604453c8d16eecfbe78cc51d"
+    },
+    "idUsuario": {
+      "$oid": "60443f39d16eecfbe78cc50b"
+    },
+
+    "idPelicula": {
+      "$oid": "60442903a0a07f30cf3a7dcb"
+    },
+    "nombrePelicula": "Avatar",
+    "comentario": "Imperdible, un gran exito de James Cameron. Sale con esta gran pelicula de ciencia ficcion a retratar todo un mundo nuevo, desde sus inicios con tiburon hasta esta tuvo un gran avance. Muy buena pelicla",
+    "calificacion": 4.5 
+},
+
+
+{
+    "nombre": "La Bruja",
+    "duracion": 93,
+    "genero": "terror",
+    "sinopsis": "Nueva Inglaterra, año 1630. William (Ralph Ineson) es el padre de una familia de colonos cristiana, que son excomulgados de su congregación en una plantación. William ha de establecerse en pleno bosque con su esposa y sus cinco hijos. Según las creencias populares, este bosque está controlado por un mal sobrenatural.",
+    "director": "Robert Eggers",
+    "estreno": 2016,
+    "poster": "http://es.web.img2.acsta.net/pictures/16/02/02/12/33/062603.jpg",
+    "idCriticas": {
+        "$oid": "604450cebc2f210b982295b2"
+    },
+    "calPromedio": 4.3
+},
+
+{"_id":{"$oid":"60443d8cbc2f210b982295a1"},
+    "nombre":"El Faro",
+    "duracion":109,
+    "genero":"terror",
+    "sinopsis":"El Faro cuenta la historia de un viejo lobo de mar (Willem Dafoe) que pasa los últimos años de su vida trabajando como farero y en su nueva misión, en una remotísima isla, estará acompañado por un aprendiz (Robert Pattinson).",
+    "director":"Robert Eggers",
+    "estreno":2019,
+    "poster":"http://es.web.img2.acsta.net/pictures/19/10/28/16/45/5520153.jpg",
+    "idCriticas":[],
+    "calPromedio":""
+},
+
+
+{
+    "nombre": "Midsommar",
+    "duracion": 147,
+    "genero": "terror",
+    "sinopsis": "Una pareja de estadounidenses acude con unos amigos a Midsommar, un festival de verano que se celebra cada 90 años en una aldea remota de Suecia. Sin embargo, lo que parecía ser unas vacaciones de ensueño se tuerce un poco cuando los aldeanos les invitan a participar en sus perturbadoras actividades festivas.",
+    "director": "Ari Aster",
+    "estreno": 2019,
+    "poster": "https://pics.filmaffinity.com/Midsommar-578791309-large.jpg",
+    "idCriticas": [],
+    "calPromedio": ""
+},
+
+{
+    "nombre": "Hereditary",
+    "duracion": 127,
+    "genero": "terror",
+    "sinopsis": "Hereditary es la historia de una secta liderada por la madre de Annie (Hellen), cuyo propósito es invocar a un demonio antiguo, Paimon. El demonio necesita un huésped masculino para manifestarse al completo, puesto que uno femenino no le gusta, y debe pertenecer al linaje de Hellen.",
+    "director": "Ari Aster",
+    "estreno": 2018,
+    "poster": "https://image.tmdb.org/t/p/w1280//nbmTaIIusXrQQc3opclmIdB6dwx.jpg",
+    "idCriticas": [],
+    "calPromedio": ""
+},
+
+{
+    "nombre": "Possessor",
+    "duracion": 104,
+    "genero": "terror",
+    "sinopsis": "Segundo largometraje de Brandon Cronenberg el cual narra la historia de Tasya Vos, una agente especial que trabaja para una organización que cumple encargos para gente poderosa que requiere asesinar personas en beneficio propio sin dejar evidencia.",
+    "director": "Brandon Cronenberg",
+    "estreno": 2021,
+    "poster": "https://pics.filmaffinity.com/Possessor-364771251-large.jpg",
+    "idCriticas": [],
+    "calPromedio": ""
+},
+
+{
+    "nombre": "Get Duked!",
+    "duracion": 87,
+    "genero": "comedia",
+    "sinopsis": "Comedia inglesa sobre cuatro jóvenes (tres de ellos poco menos que delincuentes) que deben participar en una aventura en las zonas montañosas de Escocia, con el objetivo de alcanzar la meta y obtener un codiciado premio, al menos para uno de ellos (el más responsable, obviamente).",
+    "director": "Ninian Doff",
+    "estreno": 2019,
+    "poster": "https://pics.filmaffinity.com/Get_Duked-488717284-large.jpg",
+    "idCriticas": [],
+    "calPromedio": ""
+},
+
+{
+    "nombre": "Superbad",
+    "duracion": 113,
+    "genero": "comedia",
+    "sinopsis": "Con la esperanza de tener sexo antes de iniciar la universidad, Seth y Evan intentan comprar alcohol para un fiestón, lo que desencadena una alocada serie de desventuras. Judd Apatow produjo esta genial comedia protagonizada por Jonah Hill, Michael Cera, Bill Hader, Emma Stone y Seth Rogen.",
+    "director": "Greg Mottola",
+    "estreno": 2007,
+    "poster": "https://pics.filmaffinity.com/Supersalidos-743461969-large.jpg",
+    "idCriticas": {
+        "$oid": "6044566cbc2f210b982295b9"
+    },
+    "calPromedio": 3.7
+},
+
+{
+    "nombre": "Proyecto X",
+    "duracion": 94,
+    "genero": "comedia",
+    "sinopsis": "'Project X' sigue a tres anónimos estudiantes del último curso del instituto que quieren darse a conocer. Su idea es inocente: vamos a montar una fiesta que nadie pueda olvidar... pero nada podía prepararles para esta fiesta.",
+    "director": "Nima Nourizadeh",
+    "estreno": 2012,
+    "poster": "https://pics.filmaffinity.com/Proyecto_X-393876705-large.jpg",
+    "idCriticas": [],
+    "calPromedio": ""
+},
+
+{
+    "nombre": "¿Qué pasó ayer?",
+    "duracion": 100,
+    "genero": "comedia",
+    "sinopsis": "Historia de una desmadrada despedida de soltero en la que el novio y tres amigos se montan una gran juerga en Las Vegas. Como era de esperar, a la mañana siguiente tienen una resaca tan monumental que no pueden recordar nada de lo ocurrido la noche anterior. Lo más extraordinario es que el novio ha desaparecido y en la suite del hotel se encuentran un tigre y un bebé.",
+    "director": "Todd Phillips",
+    "estreno": 2009,
+    "poster": "https://pics.filmaffinity.com/A_Qu_pas_ayer-567756276-large.jpg",
+    "idCriticas": {
+        "$oid": "604450bebc2f210b982295b1"
+    },
+    "calPromedio": 3.7
+},
+
+{
+    "nombre": "Borat",
+    "duracion": 84,
+    "genero": "comedia",
+    "sinopsis": "Sacha Baron Cohen, el peculiar protagonista de Ali G anda suelto, interpreta a Borat, un reportero de Kazajistán. Por orden de su gobierno, el periodista va a Estados Unidos para rodar un documental pedagógico, que debe recoger las mejores enseñanzas de los USA para que su país las aproveche. Pero el trabajo no será tan fácil como parece...",
+    "director": "Larry Charles",
+    "estreno": 2006,
+    "poster": "https://pics.filmaffinity.com/Borat-512396849-large.jpg",
+    "idCriticas": [],
+    "calPromedio": ""
+},
+
+{
+    "nombre": "Emilio",
+    "apellido": "Pillado",
+    "genero": "h",
+    "edad": 23,
+    "email": "emipillado@gmail.com",
+    "password": "passworduno",
+    "tipo": 0
+},
+
+{
+    "nombre": "Daniel",
+    "apellido": "Lara",
+    "genero": "h",
+    "edad": 25,
+    "email": "daniellara@gmail.com",
+    "password": "passworddos",
+    "tipo": 1
+},
+
+{
+    "nombre": "Vanessa",
+    "apellido": "Salazar",
+    "genero": "m",
+    "edad": 46,
+    "email": "vanesalaza@gmail.com",
+    "password": "passwordtres",
+    "tipo": 3
+},
+
+
+{
+    "idUsuario": {
+        "$oid": "60443f99bc2f210b982295ab"
+    },
+    "idPelicula": {
+        "$oid": "60443d79bc2f210b982295a0"
+    },
+    "nombrePelicula": "La Bruja",
+    "comentario": "Egger reinventa el terror psicologico con esre thriller. Lleva al limite la expectativa y emociones del publico y asusta en demasia sin tener que usar sustos genericos.",
+    "calificacion": 5
+},
+
+{
+    "idUsuario": {
+        "$oid": "60443fa7bc2f210b982295ac"
+    },
+    "idPelicula": {
+        "$oid": "60443e2cbc2f210b982295a8"
+    },
+    "nombrePelicula": "Que paso ayer?",
+    "comentario": "Comedia super divertida apata para ver con toda la famiila aunque tiene un poco de humor negro esta pelicula te hace reir a carcajadas desde el comienzo",
+    "calificacion": 3.7
+},
+
+
+{
+    "idUsuario": {
+        "$oid": "60443f99bc2f210b982295ab"
+    },
+    "idPelicula": {
+        "$oid": "60443e10bc2f210b982295a6"
+    },
+    "nombrePelicula": "SuperBad",
+    "comentario": "Pelicula que marco un parte-aguas para las peliculas de comedia por su humor tan pesado y situaciones tan explicitas.",
+    "calificacion": 4.8
+}
+,
+
+	{
+		"idUsuario": {
+			"$oid": "60444e0a82a4234863fd7da1"
+		},
+		"idPelicula": {
+			"$oid": "6044465882a4234863f9f3af"
+		},
+		"nombrePelicula": "Venom",
+		"comentario": "Me encantó cada escena de la película .Para los fans de la franquicia como yo, es una caricia al alma.",
+		"calificacion": 5
+	},
+	{
+		"idUsuario": {
+			"$oid": "60444e0a82a4234863fd7da2"
+		},
+		"idPelicula": {
+			"$oid": "6044465882a4234863f9f3b0"
+		},
+		"nombrePelicula": "La Gran Muralla",
+		"comentario": "",
+		"calificacion": 4
+	},
+	{
+		"idUsuario": {
+			"$oid": "60444e0a82a4234863fd7da0"
+		},
+		"idPelicula": {
+			"$oid": "6044465882a4234863f9f3a8"
+		},
+		"nombrePelicula": "La llegada",
+		"comentario": "Esta no es la típica película de guerra alienígena en la tierra, sino es algo muy diferente basada en el premiado relato \"Story of Your Life\" de Ted Chiang. Aquí podemos experimentar regresiones muy intensas que desvelan la verdadera misión que les ha llevado hasta nuestro planeta con la música adecuada que te toca el alma y nos enseña la importancia del tiempo de una forma muy bonita.",
+		"calificacion": 4.5
+	},
+	{
+		"nombre": "Battle Angel: la última guerrera",
+		"duracion": 122,
+		"genero": "Ciencia Ficción",
+		"sinopsis": "Alita es un cyborg que se despierta en la clínica de un médico sin recordar quién es. La cyborg deberá usar sus extraordinarias habilidades para combatir contra enemigos terribles, mientras trata de descubrir la verdad sobre su pasado.",
+		"director": "Robert Rodríguez",
+		"estreno": 2019,
+		"poster": "https://style.shockvisual.net/wp-content/uploads/2019/02/BATTLE-ANGEL.jpg",
+		"idCriticas": [],
+		"calPromedio": 0
+	},
+	{
+		"nombre": "La llegada",
+		"duracion": 118,
+		"genero": "Ciencia Ficción",
+		"sinopsis": "El gobierno contrata a la prestigiosa lingüista Louise Banks para que se comunique con unos alienígenas que han llegado a la Tierra. Conforme ella aprende su idioma, va experimentando regresiones muy intensas que desvelan la verdadera misión que les ha llevado hasta nuestro planeta",
+		"director": "Denis Villeneuve",
+		"estreno": 2016,
+		"poster": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTt2dzvBs0FkqzxitH8o2X-t52hPQ28-FMkfgp9b46BZQaBmGuF",
+		"idCriticas": [],
+		"calPromedio": 0
+	},
+	{
+		"nombre": "Valerian y la Ciudad de los Mil Planetas",
+		"duracion": 137,
+		"genero": "Ciencia Ficción",
+		"sinopsis": "En el siglo XXVIII, los agentes terrícolas Valerian y Laureline son enviadas por el ministro de Defensa a explorar un nuevo mundo que está al borde de una guerra civil para comprobar si son una amenaza potencial contra la Tierra. La situación política del planeta, divido entre una aristocracia decadente, un pueblo exaltado y unos sabios astutos y manipuladores les obligará a tomar partido por uno de los dos bandos.",
+		"director": "Luc Besson",
+		"estreno": 2017,
+		"poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdnI7jdnu6kGL12hOJkatOpyjFS7vzPwiQc6ONbvUH1xl0SkQa",
+		"idCriticas": [],
+		"calPromedio": 0
+	},
+	{
+		"nombre": "Barrenderos espaciales",
+		"duracion": 136,
+		"genero": "Ciencia Ficción",
+		"sinopsis": "Barrenderos espaciales es una película surcoreana de 2021 de ciencia ficción dirigida por Jo Sung-hee y protagonizada por Song Joong-ki, Kim Tae-ri, Jin Seon-kyu y Yoo Hae-jin.",
+		"director": "Jo Sung-hee",
+		"estreno": 2021,
+		"poster": "https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/1200/public/media/image/2021/02/barrenderos-espaciales-2221297.jpg?itok=q6jdRinP",
+		"idCriticas": [],
+		"calPromedio": 0
+	},
+	{
+		"nombre": "Attraction: la guerra ha comenzado",
+		"duracion": 137,
+		"genero": "Ciencia Ficción",
+		"sinopsis": "Un objeto no identificado de origen extraterrestre es derribado sobre el suelo de Moscú y los habitantes de la capital rusa son evacuados. Un equipo de experimentados militares entrará entonces en contacto con los alienígenas supervivientes.",
+		"director": "Fiodor Bondarchuk",
+		"estreno": 2017,
+		"poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYKxNum-3N1-mlz29jAwI5VutvT5bHf_mnnowt7zs4CqmOpiLu",
+		"idCriticas": [],
+		"calPromedio": 0
+	},
+	{
+		"nombre": "Jiu Jitsu",
+		"duracion": 102,
+		"genero": "Acción",
+		"sinopsis": "Cada seis años, una antigua orden de expertos en jiu-jitsu se unen para pelear contra unos horripilantes invasores alienígenas. Sin embargo, Brad, el líder del grupo, sufre amnesia y no quiere pelear. Sin él, el planeta parece condenado",
+		"director": "Dimitri Logothetis",
+		"estreno": 2020,
+		"poster": "https://pics.filmaffinity.com/Jiu_Jitsu-927656437-mmed.jpg",
+		"idCriticas": [],
+		"calPromedio": 0
+	},
+	{
+		"nombre": "John Wick 3: Parabellum",
+		"duracion": 143,
+		"genero": "Acción",
+		"sinopsis": "El legendario sicario John Wick es perseguido por las calles de Nueva York. Lo buscan unos mercenarios por una recompensa de 14 millones de dólares por su cabeza y por romper con una regla.",
+		"director": "Chad Stahelski",
+		"estreno": 2019,
+		"poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxrd_sl_MyUwiTzXG6gxkAHdqRZsPy2kFJ8ZnBhzJrpk_r5fQ8",
+		"idCriticas": [],
+		"calPromedio": 0
+	},
+	{
+		"nombre": "Rampage: devastación",
+		"duracion": 115,
+		"genero": "Acción",
+		"sinopsis": "Un gorila, un lobo y una serpiente sufren una mutación genética y se convierten en seres gigantescos y violentos. El primatólogo que cuidaba del gorila y una experta en genética tratan de detenerlos y, al mismo tiempo, evitar que sufran daños.",
+		"director": "Brad Peyton",
+		"estreno": 2018,
+		"poster": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT4WUMMqHCvnlokYl5-dQLCeOFmHxJRM1OWwq72VKqiCi2Gl1Oz",
+		"idCriticas": [],
+		"calPromedio": 0
+	},
+	{
+		"nombre": "Venom",
+		"duracion": 140,
+		"genero": "Acción",
+		"sinopsis": "El periodista Eddie Brock está investigando a Carlton Drake, el célebre fundador de Life Foundation. Brock establece una simbiosis con un ente alienígena que le ofrece superpoderes, pero el ser se apodera de su personalidad y lo vuelve perverso.",
+		"director": "Ruben Fleischer",
+		"estreno": 2018,
+		"poster": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTZaRa4lpAjxe-1MyN3Sy4ASnfnnkNzbtybyr-h3UGakUj-KYjy",
+		"idCriticas": [],
+		"calPromedio": 0
+	},
+	{
+		"nombre": "La Gran Muralla",
+		"duracion": 120,
+		"genero": "Acción",
+		"sinopsis": "Encarcelado dentro de la Gran Muralla china, un guerrero mercenario une fuerzas con un ejército de élite para luchar contra un ataque de monstruos saqueadores.",
+		"director": "Zhang Yimou",
+		"estreno": 2016,
+		"poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTD2_hEd-qq94Kte_2r8PgpV5IbgbczEujFn3dpcyEZoUHOv5TO",
+		"idCriticas": [],
+		"calPromedio": 0
+	},
+	{
+		"nombre": "Alejandro",
+		"apellido": "Fuentes",
+		"genero": "h",
+		"edad": 21,
+		"email": "alex@correo.com",
+		"password": "password",
+		"tipo": 0
+	},
+	{
+		"nombre": "Adriana",
+		"apellido": "Alfonso",
+		"genero": "m",
+		"edad": 20,
+		"email": "adriana@gmail.com",
+		"password": "password",
+		"tipo": 1
+	},
+	{
+		"nombre": "Andrés",
+		"apellido": "Sanchez",
+		"genero": "h",
+		"edad": 22,
+		"email": "andres@gmail.com",
+		"password": "password",
+		"tipo": 1
+	}
+
+
+
+]
