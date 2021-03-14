@@ -6,11 +6,13 @@ const {
 	obtenerUsuarioPorId,
 	modificarUsuario,
 	eliminarUsuario,
-	iniciarSesion
+	iniciarSesion, 
+	obtenerCamposUsuarios
 } = require('../controllers/usuarios');
 const auth = require('./auth');
 
 router.get('/', auth.requerido, obtenerUsuarios);
+router.get('/campos', auth.requerido, obtenerCamposUsuarios);
 router.get('/:id', auth.requerido, obtenerUsuarioPorId);
 router.post('/', registroUsuario);
 router.post('/entrar', iniciarSesion);

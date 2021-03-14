@@ -1,6 +1,7 @@
 /*  Archivo controllers/peliculas.js*/
 
 const mongoose = require('mongoose');
+const { options } = require('../routes');
 const Pelicula = mongoose.model('Pelicula');
 
 function crearPelicula(req, res, next) {
@@ -25,7 +26,7 @@ function crearPelicula(req, res, next) {
 		});
 }
 
-function crearMongoQuery(params) {
+function createMongoParams(params) {
 	const { genero, duracion, duracionMin, duracionMax, estreno, estrenoMin, estrenoMax } = params;
 	const filtros = Object.keys(params);
 
@@ -121,17 +122,26 @@ function crearMongoQuery(params) {
 
 function obtenerPeliculas(req, res, next) {
 	const { query } = req;
-	let mongoQuery = crearMongoQuery(query);
+	let mongoQuery = createMongoParams(query);
 	let options = {};
-	Pelicula.find(mongoQuery, options)
-		.then((peliculas) => {
-			if (!peliculas.length) {
-				return res.status(404).send('Ninguna conincidencia fué encontrada');
-			}
-			return res.status(200).json(peliculas);
-		})
-		.catch(next);
+	Pelicula.find(mongoQuery, options).then((peliculas) => {
+		if (!peliculas.length) {
+			return res.status(404).send('Ninguna conincidencia fué encontrada');
+		}
+		return res.status(200).json(peliculas);
+	});
 }
+// function obtenerPeliculasPorGenero(req, res, next) {
+// 	const genero = req.params.genero;
+// 	Pelicula.find({ genero: genero })
+// 		.then((results) => {
+// 			if (!results) {
+// 				return res.status(404).send('Ninguna película de este género fue encontrada');
+// 			}
+// 			return res.status(302).json(results);
+// 		})
+// 		.catch(next);
+// }
 
 function obtenerPeliculaPorID(req, res, next) {
 	const id = req.params.id;
@@ -150,27 +160,27 @@ function obtenerPeliculaPorID(req, res, next) {
 
 function modificarPelicula(req, res, next) {
 	const id = req.params.id;
-	let modificacion = {};
+	let update = {};
 
 	const { nombre, duracion, genero, sinopsis, director, estreno, poster, calPromedio } = req.body;
 
-	if (typeof nombre !== 'undefined') modificacion.nombre = nombre;
+	if (typeof nombre !== 'undefined') update.nombre = nombre;
 
-	if (typeof duracion !== 'undefined') modificacion.duracion = duracion;
+	if (typeof duracion !== 'undefined') update.duracion = duracion;
 
-	if (typeof genero !== 'undefined') modificacion.genero = genero;
+	if (typeof genero !== 'undefined') update.genero = genero;
 
-	if (typeof sinopsis !== 'undefined') modificacion.sinopsis = sinopsis;
+	if (typeof sinopsis !== 'undefined') update.sinopsis = sinopsis;
 
-	if (typeof director !== 'undefined') modificacion.director = director;
+	if (typeof director !== 'undefined') update.director = director;
 
-	if (typeof estreno !== 'undefined') modificacion.estreno = estreno;
+	if (typeof estreno !== 'undefined') update.estreno = estreno;
 
-	if (typeof poster !== 'undefined') modificacion.poster = poster;
+	if (typeof poster !== 'undefined') update.poster = poster;
 
-	if (typeof calPromedio !== 'undefined') modificacion.calPromedio = calPromedio;
+	if (typeof calPromedio !== 'undefined') update.calPromedio = calPromedio;
 
-	Pelicula.findByIdAndUpdate(id, modificacion)
+	Pelicula.findByIdAndUpdate(id, update)
 		.then(() => {
 			return res.status(200).send({ estado: 'Película modificada exitosamente' });
 		})
