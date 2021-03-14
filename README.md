@@ -3,13 +3,10 @@ Este proyecto es una API REST construida en NODEJS que tiene como objetivo obten
 Criticos pueden dar su calificacion y su respectiva reseña a las peliculas agregadas por los administradores y los 
 demas usuarios pueden ver estas recomendaciones para poder elegir las peliculas que mas les pueden gustar.
 
-
-# Temática de su proyecto.
-Definan los requerimientos del proyecto, así como su estructura, es decir, respondan las preguntas
-### ¿Qué tipos de usuario tendrá nuestro sistema?
-* Admin
-* Critico
-* Usuario
+### ¿Qué tipos de usuario existen?
+* Admin -> 0
+* Critico -> 1
+* Usuario -> 2
 ## ¿Qué acciones puede realizar cada usuario?
 * Admin
 * Crear registros de películas
@@ -18,8 +15,8 @@ Definan los requerimientos del proyecto, así como su estructura, es decir, resp
 * Editar registros de películas
 * Crítico
 * Crear reseñas de películas
-* Eliminar reseñas de películas (Sólo de las cuales es autor)
-* Modificar reseñas de películas (Sólo de las cuales es autor)
+* Eliminar reseñas de películas 
+* Modificar reseñas de películas
 * Usuario
 * Listar reseñas de películas
 ## ¿Qué información se necesita?
@@ -58,7 +55,7 @@ Definan los requerimientos del proyecto, así como su estructura, es decir, resp
 
 Las películas tendrán información que las defina como nombre, genero, duracion, director, año de estreno, etc para que los usuarios puedan tener más opciones para asi poder filtrar el tipo de peliculas que le sean mas de agrado. 
 Las críticas tendran caracteristicas como reseña y calificación, el campo de reseña será opcional mientras que el de calificación será obligatorio. 
-Los usuarios es otra entidad y se clasifican en Admin que es el unico que puede agregar peliculas, eliminarlas y editarlas, Crítico que es el unico usuario que puede añadir, eliminar y reseñas(Solo de reseñas en el que es el autor) y los usuarios “normales” que son lo unico que pueden hacer es listar peliculas asi como filtrar sus búsqueda. Todos los usuarios tienen información adicional como nombre, género, edad, ocupación, etc. De esta manera los usuarios pueden ver que características tienen los críticos que escriben las reseñas y ver a qué público están dirigidas las películas.
+Los usuarios es otra entidad y se clasifican en Admin que es el unico que puede agregar peliculas, eliminarlas y editarlas, Crítico que es el unico usuario que puede añadir, eliminar y reseñas y los usuarios “normales” que son lo unico que pueden hacer es listar peliculas asi como filtrar sus búsqueda. Todos los usuarios tienen información adicional como nombre, género, edad, ocupación, etc. De esta manera los usuarios pueden ver que características tienen los críticos que escriben las reseñas y ver a qué público están dirigidas las películas.
 Todos los usuarios son capaces de listar películas, y cada entidad posee un ID unico para poder relacionarse entre entidades. Así a cada ID de película corresponden IDs de usuarios únicos. De esta manera una película no recibe dos críticas del mismo usuario.
 ¿Qué funcionalidades tiene cada entidad?
 
@@ -73,12 +70,15 @@ La entidad de usuarios tiene las funciones de agregar, modificar y obtener todos
 
 ## ¿Qué espero que haga el proyecto?
  
-CRUD básico
+CRUD básico y algunas consultas extra con filtros
 
 Queremos crear nuestra base de datos o peliculas, registrandolas (Crear)
 Queremos darles un id unico
-queremos poder consultar la info de cada pelicula (leerla)
-Queremos poder poner una critica o resena sobre la peli y una calificacion (actualizar)
-y queremos como admins poder borrar registros (borrar)
+Queremos poder consultar la info de cada pelicula, con determinados filtros dependiendo de su informacion (leerla)
+Queremos añadir un comentario/reseña sobre la pelicula y una calificacion (actualizar)
+Queremos como admin poder borrar registros (borrar)
+Queremos poder añadir usuarios con distintas características
+Queremos poder listar esos usuarios
+Queremos actualizar los datos para que cambien los permisos u otros atributos
 
 
