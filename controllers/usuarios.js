@@ -10,12 +10,19 @@ function registroUsuario(req, res, next) {
 	delete body.password;
 	const usuario = new Usuario(body);
 	usuario.crearPassword(password);
-	usuario
+  usuario.
+  validate().
+  then((result) => {
+    usuario
 		.save()
 		.then((user) => {
 			return res.status(201).json(user.toAuthJSON());
 		})
 		.catch(next);
+  })
+  .catch((err) => {
+    return res.status(404).send("No se pudo guardar usuario");
+  });
 }
 
 function createMongoParams(params) {
@@ -179,7 +186,9 @@ function modificarUsuario(req, res, next) {
 
 	if (typeof tipo !== 'undefined') modificacion.tipo = tipo;
 
-	Usuario.findByIdAndUpdate(id, modificacion)
+	Usuario.findByIdAndUpdate(id, modificacion, function(err, doc) {
+    if (err) return res.status(400).send("Error al modificar");
+  })
 		.then(() => {
 			return res.status(200).send({ estado: 'Usuario modificado exitosamente' });
 		})
