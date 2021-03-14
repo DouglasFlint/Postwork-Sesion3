@@ -93,6 +93,9 @@ function createMongoParams(params) {
 		}
 
 	}
+  if(rules.$and.length === 0) {
+    delete rules.$and;
+  }
 
 	return rules;
 }
@@ -110,61 +113,35 @@ function obtenerUsuarioPorId(req, res, next) {
 function obtenerUsuarios(req, res, next) {
 	const { query } = req;
 	let mongoQuery = createMongoParams(query);
-	Usuario.find(mongoQuery, (err, users) => {
-		if (!users.length || err) {
-			return res.status(404).send('Ninguna conincidencia fué encontrada');
-		}
-		var userMap = {};
-
-		users.forEach(function(user) {
-			userMap[user._id] = user.publicData();
-		});
-
-		res.status(200).send(userMap);
-	}).select("").catch(next);
-}
-
-function obtenerCamposUsuarios(req, res, next) {
-  const { query } = req;
-  console.log(query)
-  let fields;
+  let campo = query.campo;
+  let limit = query.limit;
+  let projection;
   let documents;
-  // Si en los params viene el campo
-  if(Object.keys(query).length > 0 && Object.keys(query).includes("campo")) {
-    documents = "";
-    // Si es un solo campo
-    if(typeof query.campo === "string") {
-      fields = query.campo;
-      // Si es un arreglo de campos tipo ["username", "nombre"]
-    } else if(typeof query.campo === "object") {
-      //Convierte el arreglo a un string para meterlo en el select
-      fields = query.campo.join(" "); 
-    }
+  console.log(campo)
+  console.log(mongoQuery)
+  if (campo && typeof campo === "object") {
+    projection = campo.join(" ");
+  } else if (campo && typeof campo === "string") {
+    projection = campo;
+  } else {
+    projection = "";
+  }
+  if(limit) {
+    documents = parseInt(limit);
+  }
+	Usuario.find(mongoQuery, projection, (err, users) => {
     
-  }
-  // Si en los params viene el numero de registros
-  else if(Object.keys(query).length > 0 && Object.keys(query).includes("registro")) {
-    field = "";
-    //guarda el numero que le pasa el usuario para despues meterlo en el limit
-    documents = parseInt(query.registro);
-  }
-  else {
-    fields = "";
-    documents = "";
-  }
-  console.log(fields)
-  Usuario.find({}, (err, users) => {
-		if (!users.length || err) {
+		if (!users || err) {
 			return res.status(404).send('Ninguna conincidencia fué encontrada');
 		}
-		var userMap = {};
+		var array = [];
 
 		users.forEach(function(user) {
-			userMap[user._id] = user.publicData();
+			array.push(user);
 		});
 
-		res.status(200).send(userMap);
-	}).select(fields).limit(documents).catch(next);
+		res.status(200).send(array);
+	}).limit(documents).catch(next);
 }
 
 function modificarUsuario(req, res, next) {
@@ -239,5 +216,4 @@ module.exports = {
 	modificarUsuario,
 	eliminarUsuario,
 	iniciarSesion,
-  obtenerCamposUsuarios,
 };
