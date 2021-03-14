@@ -25,6 +25,7 @@ const crypto = require('crypto');                             //Importando módu
     genero: {
         type: String,
         required: true,
+        lowercase: true,
         maxLength: 1
     },
     edad: {
