@@ -1,9 +1,11 @@
-const passport = require('passport');                       //Importando passport, middleware para autenticación.
-const LocalStrategy = require('passport-local').Strategy;   //Importando estrategia autenticación. --> passport-local
+/* Modulo de autenticacion de usuarios con passport */
+const passport = require('passport');                     
+const LocalStrategy = require('passport-local').Strategy;
 const mongoose = require('mongoose');
 const Usuario = mongoose.model('Usuario');
 
-passport.use(new LocalStrategy({                            //Configurando elementos utilizados para habilitar sesión.
+// Email y contraseña para iniciar sesion
+passport.use(new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password'
 }, function (email, password, done) {

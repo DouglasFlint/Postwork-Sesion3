@@ -1,6 +1,7 @@
 const jwt = require('express-jwt');
 const secret = require('../config').secret;
 
+// Configurando los headers para leer la autenticacion que es Oauth2-0 o bearer
 function getTokenFromHeader(req) {
 	if (
 		(req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Token') ||

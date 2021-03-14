@@ -41,6 +41,7 @@ function createMongoParams(params) {
     if (typeof apellido === 'string') {
 			rules['$and'].push({ apellido: apellido });
 		} else if (typeof apellido === 'object') {
+      //Usuarios.find({ '$and': [ { '$or': [ { apellido: 'quintero' }, { apellido: 'vazquez' } ] } )
 			const apellidos = apellido.map((ape) => ({ apellido: ape }));
 			rules['$and'].push({ $or: apellidos });
 			console.log(rules['$and']);
@@ -51,7 +52,7 @@ function createMongoParams(params) {
 			rules['$and'].push({ genero: genero });
 		}
 
-    
+    // Usuarios.find({ '$and': [ { '$and': [ { edad: { '$gte': 20 } }, { edad: { '$lte': 40 } } ] } ]})
 		if (edad) {
 			rules['$and'].push({ edad: edad });
 		} else {
@@ -95,19 +96,24 @@ function createMongoParams(params) {
 			console.log(rules['$and']);
 		}
 
-	}
+	} else {
+    return {};
+  }
   // si no hay filtros entonces se borra la informacion del objeto
   if(rules.$and.length === 0) {
     delete rules.$and;
   }
-
+  
 	return rules;
 }
 
 function obtenerUsuarioPorId(req, res, next) {
   Usuario.findById(req.params.id, (err, user) => {
     if (!user || err) {
-      return res.sendStatus(401).send('Error, el usuario no existe');
+      res.statusCode = 401;
+      res.setHeader('Content-Type', 'text/plain');
+      res.end('Error, usuario no encontrado');
+      return res;
     }
     return res.status(200).json(user.publicData());
   }).catch(next);
@@ -134,17 +140,18 @@ function obtenerUsuarios(req, res, next) {
   }
   // Se agrega un limite de los campos a mostrar
   if(limit) {
+    // Se hace el parseo a int para que pueda emitir la consulta
     documents = parseInt(limit);
   }
 	Usuario.find(mongoQuery, projection, (err, users) => {
     
-		if (!users || err) {
+		if (!users || err || users.length === 0) {
 			return res.status(404).send('Ninguna conincidencia fué encontrada');
 		}
 		var array = [];
 
 		users.forEach(function(user) {
-			array.push(user);
+			array.push(user.publicData());
 		});
 
 		res.status(200).send(array);

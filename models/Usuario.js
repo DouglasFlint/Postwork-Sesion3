@@ -1,16 +1,17 @@
 // Usuario.js
 const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
-const crypto = require('crypto');                             //Importando módulo crypto, pendiente de instalar.
-   const jwt = require('jsonwebtoken');                          //Importando módulo jsonwebtoken, pendiente de instalar.
+const crypto = require('crypto');                            
+   const jwt = require('jsonwebtoken');                          
    const secret = require('../config').secret;                   
 
-   const UsuarioSchema = new mongoose.Schema({                   //Definiendo el objeto UsuarioSchema con el constructor Schema.
-    username: {                                                  //Definiendo cada campo con sus tipo sde datos y validaciones.
+   const UsuarioSchema = new mongoose.Schema({                  
+    username: {                                                 
       type: String,
       unique: true,
       lowercase: true,
       required: [true, "Campo obligatorio"],
+      // regex para no admitir caracteres extraños
       match: [/^[a-zA-Z0-9]+$/, "es inválido"],
       index: true,
     },                                           
@@ -37,6 +38,7 @@ const crypto = require('crypto');                             //Importando módu
       unique: true,
       lowercase: true,
       required: [true, "Campo obligatorio"],
+      // regex para formato email
       match: [/\S+@\S+\.\S+/, "Email invalido"],
       index: true
     },
@@ -52,15 +54,18 @@ const crypto = require('crypto');                             //Importando módu
   },
     {
       timestamps: true,
-      collection: 'Usuarios' //Nombre existente de la colección de usuarios
+      //Nombre existente de la colección de usuarios
+      collection: 'Usuarios'
     }
 ); 
 
 UsuarioSchema.methods.crearPassword = function (password) {
-  this.salt = crypto.randomBytes(16).toString("hex"); // generando una "sal" random para cada usuario
+  // generando una contraseña aleatoria dependiendo del usuario
+  this.salt = crypto.randomBytes(16).toString("hex");
   this.hash = crypto
     .pbkdf2Sync(password, this.salt, 10000, 512, "sha512")
-    .toString("hex"); // generando un hash utilizando la sal
+    // generando una contraseña encriptada hash con salt
+    .toString("hex"); 
 };
 
 /**
@@ -98,7 +103,7 @@ UsuarioSchema.methods.toAuthJSON = function(){
 };
 
 /**
-* Devuelve la representación de un usuario, sólo datos públicos
+* Devuelve la representación de un usuario, sólo datos públicos por seguridad
 */
 UsuarioSchema.methods.publicData = function(){
   return {
