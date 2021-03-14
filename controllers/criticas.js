@@ -12,7 +12,6 @@ function crearCritica(req, res, next) {
 		...req.body,
 		idUsuario: id
 	});
-
 	critica
 		.save()
 		.then((critica) => {
@@ -38,8 +37,23 @@ function crearCritica(req, res, next) {
 }
 
 function obtenerCriticas(req, res, next) {
+	const { campo, limit } = req.query;
 	const { peliculaID } = req.params;
+	//crear projection que es un String que especifica que campos devolver en la consulta
+	const projection =
+		campo && typeof campo === 'object'
+			? // crear un string con los campos definidos en el array campos
+				campo.join(' ')
+			: //si solo se ha pasado un campo , devolver el valor del campo
+				typeof campo === 'string'
+				? campo
+				: //si ningun campo fue especificado devolver un string vacío
+					'';
+
+	const limitNumer = limit ? parseInt(limit) : 0;
 	Critica.find()
+		.select(projection)
+		.limit(limitNumer)
 		.where('idPelicula')
 		.equals(peliculaID)
 		.exec()
