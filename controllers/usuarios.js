@@ -28,8 +28,10 @@ function createMongoParams(params) {
 		rules = {
 			$and: []
 		};
+    //para cuando solo hay un nombre
     if (typeof nombre === 'string') {
 			rules['$and'].push({ nombre: nombre });
+      //Cuando hay un arreglo de nombres
 		} else if (typeof nombre === 'object') {
 			const nombres = nombre.map((nom) => ({ nombre: nom}));
 			rules['$and'].push({ $or: nombres });
@@ -44,6 +46,7 @@ function createMongoParams(params) {
 			console.log(rules['$and']);
 		}
 
+    //Solo hay dos opciones, por lo tanto se asigna directamente
     if (genero) {
 			rules['$and'].push({ genero: genero });
 		}
@@ -93,6 +96,10 @@ function createMongoParams(params) {
 		}
 
 	}
+  // si no hay filtros entonces se borra la informacion del objeto
+  if(rules.$and.length === 0) {
+    delete rules.$and;
+  }
 
 	return rules;
 }
@@ -109,66 +116,44 @@ function obtenerUsuarioPorId(req, res, next) {
 
 function obtenerUsuarios(req, res, next) {
 	const { query } = req;
+  // funcion que crea un query para filtrar consultas
 	let mongoQuery = createMongoParams(query);
-	Usuario.find(mongoQuery, (err, users) => {
-		if (!users.length || err) {
-			return res.status(404).send('Ninguna conincidencia fué encontrada');
-		}
-		var userMap = {};
-
-		users.forEach(function(user) {
-			userMap[user._id] = user.publicData();
-		});
-
-		res.status(200).send(userMap);
-	}).select("").catch(next);
-}
-
-function obtenerCamposUsuarios(req, res, next) {
-  const { query } = req;
-  console.log(query)
-  let fields;
+  let campo = query.campo;
+  let limit = query.limit;
+  let projection;
   let documents;
-  // Si en los params viene el campo
-  if(Object.keys(query).length > 0 && Object.keys(query).includes("campo")) {
-    documents = "";
-    // Si es un solo campo
-    if(typeof query.campo === "string") {
-      fields = query.campo;
-      // Si es un arreglo de campos tipo ["username", "nombre"]
-    } else if(typeof query.campo === "object") {
-      //Convierte el arreglo a un string para meterlo en el select
-      fields = query.campo.join(" "); 
-    }
+  // arreglo de campos para mostrar en projection del tipo ["username", "nombre"]
+  if (campo && typeof campo === "object") {
+    // se convierte el arreglo a cadena
+    projection = campo.join(" ");
+    // cuando solo se tiene un campo
+  } else if (campo && typeof campo === "string") {
+    projection = campo;
+  } else {
+    projection = "";
+  }
+  // Se agrega un limite de los campos a mostrar
+  if(limit) {
+    documents = parseInt(limit);
+  }
+	Usuario.find(mongoQuery, projection, (err, users) => {
     
-  }
-  // Si en los params viene el numero de registros
-  else if(Object.keys(query).length > 0 && Object.keys(query).includes("registro")) {
-    field = "";
-    //guarda el numero que le pasa el usuario para despues meterlo en el limit
-    documents = parseInt(query.registro);
-  }
-  else {
-    fields = "";
-    documents = "";
-  }
-  console.log(fields)
-  Usuario.find({}, (err, users) => {
-		if (!users.length || err) {
+		if (!users || err) {
 			return res.status(404).send('Ninguna conincidencia fué encontrada');
 		}
-		var userMap = {};
+		var array = [];
 
 		users.forEach(function(user) {
-			userMap[user._id] = user.publicData();
+			array.push(user);
 		});
 
-		res.status(200).send(userMap);
-	}).select(fields).limit(documents).catch(next);
+		res.status(200).send(array);
+	}).limit(documents).
+  catch(next);
 }
 
 function modificarUsuario(req, res, next) {
-	// console.log(req.usuario);
+	// metodo para modificar usuarios, si no encuentra campos no los toma en cuenta
   const id = req.params.id;
 	let modificacion = {};
 	const { username, nombre, apellido, genero, edad, email, tipo } = req.body;
@@ -239,5 +224,4 @@ module.exports = {
 	modificarUsuario,
 	eliminarUsuario,
 	iniciarSesion,
-  obtenerCamposUsuarios,
 };
