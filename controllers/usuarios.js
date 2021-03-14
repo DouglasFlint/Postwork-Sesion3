@@ -110,7 +110,7 @@ function createMongoParams(params) {
 function obtenerUsuarioPorId(req, res, next) {
   Usuario.findById(req.params.id, (err, user) => {
     if (!user || err) {
-      res.statusCode = 401;
+      res.statusCode = 404;
       res.setHeader('Content-Type', 'text/plain');
       res.end('Error, usuario no encontrado');
       return res;
