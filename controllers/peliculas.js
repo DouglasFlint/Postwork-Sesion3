@@ -217,27 +217,27 @@ function obtenerCamposPeliculas(req, res, next) {
 
 function modificarPelicula(req, res, next) {
 	const id = req.params.id;
-	let modificacion = {};
+	let update = {};
 
 	const { nombre, duracion, genero, sinopsis, director, estreno, poster, calPromedio } = req.body;
 
-	if (typeof nombre !== 'undefined') modificacion.nombre = nombre;
+	if (typeof nombre !== 'undefined') update.nombre = nombre;
 
-	if (typeof duracion !== 'undefined') modificacion.duracion = duracion;
+	if (typeof duracion !== 'undefined') update.duracion = duracion;
 
-	if (typeof genero !== 'undefined') modificacion.genero = genero;
+	if (typeof genero !== 'undefined') update.genero = genero;
 
-	if (typeof sinopsis !== 'undefined') modificacion.sinopsis = sinopsis;
+	if (typeof sinopsis !== 'undefined') update.sinopsis = sinopsis;
 
-	if (typeof director !== 'undefined') modificacion.director = director;
+	if (typeof director !== 'undefined') update.director = director;
 
-	if (typeof estreno !== 'undefined') modificacion.estreno = estreno;
+	if (typeof estreno !== 'undefined') update.estreno = estreno;
 
-	if (typeof poster !== 'undefined') modificacion.poster = poster;
+	if (typeof poster !== 'undefined') update.poster = poster;
 
-	if (typeof calPromedio !== 'undefined') modificacion.calPromedio = calPromedio;
+	if (typeof calPromedio !== 'undefined') update.calPromedio = calPromedio;
 
-	Pelicula.findByIdAndUpdate(id, modificacion)
+	Pelicula.findByIdAndUpdate(id, update)
 		.then(() => {
 			return res.status(200).send({ estado: 'Película modificada exitosamente' });
 		})
