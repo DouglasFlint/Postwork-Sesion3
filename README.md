@@ -20,25 +20,33 @@ demas usuarios pueden ver estas recomendaciones para poder elegir las peliculas 
 * Usuario
 * Listar reseñas de películas
 ## ¿Qué información se necesita?
-* Pelicula
-* Nombre de la película
+## Pelicula
  * ID de la película
+* Nombre de la película
 * Duración
 * Género
-* Calificación
-* Reseña
+* Sinopsis
 * Director
-* Año
-* Reseña
-* Reseña
-* ID de la reseña
-* ID del usuario
+* Estreno
+* Poster
+* idCriticas
+* Estrellas
+
+## Critica
+* ID Critica
+* ID Usuario
+* ID Pelicula
+* Nombre de la pelicula
+* Comentario
+* Calificacion
 
 ## Usuario
+* Username
 * Nombre del usuario
-* Edad del usuario
-* Género del usuario
-* Ocupación del usuario (para saber a qué tipo de personas le gustan qué películas)
+* Apellido
+* Edad
+* Género
+* Email
 * Tipo de usuario
 
 
