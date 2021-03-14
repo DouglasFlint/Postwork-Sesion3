@@ -25,12 +25,42 @@ function crearPelicula(req, res, next) {
 		});
 }
 
+// class MongoQuery {
+// 	constructor(filtros) {
+// 		this.conMultiplesFiltros = undefined;
+// 		this.base = {};
+// 		this.filtros = filtros;
+// 	}
+
+// 	definirBase() {
+// 		const numeroFiltros = Object.keys(params).length;
+// 		if (numeroFiltros > 1) this.base = { $and: {} };
+// 		this.conMultiplesFiltros = numeroFiltros > 1;
+// 	}
+
+// 	createQuery() {
+// 		this.filtros.forEach((filtro) => {});
+// 	}
+
+// 	esReglaOr(filtro) {
+// 		return typeof filtro === 'object';
+// 	}
+
+// 	agregarRegla(regla) {
+// 		if (this.conMultiplesFiltros) {
+// 			this.base.
+// 		}
+// 	}
+// }
+
 function crearMongoQuery(params) {
 	const { genero, duracion, duracionMin, duracionMax, estreno, estrenoMin, estrenoMax } = params;
-	const filtros = Object.keys(params);
 
+	const filtros = [ genero, duracion, duracionMin, duracionMax, estreno, estrenoMin, estrenoMax ].filter(
+		(filtro) => filtro !== undefined
+	);
 	let rules = {};
-	if (filtros.length > 0) {
+	if (filtros.length > 1) {
 		rules = {
 			$and: []
 		};
@@ -120,10 +150,26 @@ function crearMongoQuery(params) {
 }
 
 function obtenerPeliculas(req, res, next) {
+	//Obtener todos los parametros
 	const { query } = req;
+	//Obtener los parametros campo y limit
+	const { campo, limit } = query;
+	//crear projection que es un String que especifica que campos devolver en la consulta
+	const projection =
+		campo && typeof campo === 'object'
+			? // crear un string con los campos definidos en el array campos
+				campo.join(' ')
+			: //si solo se ha pasado un campo , devolver el valor del campo
+				typeof campo === 'string'
+				? campo
+				: //si ningun campo fue especificado devolver un string vacío
+					'';
+	const limitNumer = parseInt(limit);
+	//Si el límite de resultados es definido por esl usuario agregar el limite en las opciones , caso contrario, redolver un objeti vacio
+	const options = limitNumer ? { limit: limitNumer } : {};
 	let mongoQuery = crearMongoQuery(query);
-	let options = {};
-	Pelicula.find(mongoQuery, options)
+
+	Pelicula.find(mongoQuery, projection, options)
 		.then((peliculas) => {
 			if (!peliculas.length) {
 				return res.status(404).send('Ninguna conincidencia fué encontrada');
@@ -135,9 +181,8 @@ function obtenerPeliculas(req, res, next) {
 
 function obtenerPeliculaPorID(req, res, next) {
 	const id = req.params.id;
-	if (!id) {
-		res.status(400).send('Parámetro "id" inexistente');
-	}
+	if (!id) res.status(400).send('Parámetro "id" inexistente');
+
 	Pelicula.findOne({ _id: id })
 		.then((pelicula) => {
 			if (!pelicula) {
@@ -146,6 +191,28 @@ function obtenerPeliculaPorID(req, res, next) {
 			return res.status(302).json(pelicula);
 		})
 		.catch(next);
+}
+
+function obtenerCamposPeliculas(req, res, next) {
+	//Obtener los campos a devolver en el
+	const { campo, limit } = req.query;
+	//el string projection especifica que campos devolver en la consulta
+	const projection =
+		campo && typeof campo === 'object'
+			? // crear un string con los campos definidos en el array campos
+				campo.join(' ')
+			: //si solo se ha pasado un campo , devolver el valor del campo
+				typeof campo === 'string'
+				? campo
+				: //si ningun campo fue especificado devolver un string vacío
+					'';
+	const limitNumer = parseInt(limit);
+	//Si el límite de resultados es definido por esl usuario agregar el limite en las opciones , caso contrario, redolver un objeti vacio
+	const options = limitNumer ? { limit: limitNumer } : {};
+	Pelicula.find({}, projection, options, (err, peliculas) => {
+		if (err) next(err);
+		return res.send(peliculas);
+	});
 }
 
 function modificarPelicula(req, res, next) {
@@ -192,6 +259,7 @@ module.exports = {
 	crearPelicula,
 	obtenerPeliculas,
 	obtenerPeliculaPorID,
+	obtenerCamposPeliculas,
 	modificarPelicula,
 	eliminarPelicula
 };

@@ -4,10 +4,12 @@ const {
 	crearPelicula,
 	obtenerPeliculas,
 	obtenerPeliculaPorID,
+	obtenerCamposPeliculas,
 	modificarPelicula,
 	eliminarPelicula
 } = require('../controllers/peliculas');
 
+router.get('/campos', obtenerCamposPeliculas);
 router.get('/', obtenerPeliculas); //admite query params
 router.post('/', crearPelicula);
 
