@@ -1,7 +1,6 @@
 /*  Archivo controllers/peliculas.js*/
 
 const mongoose = require('mongoose');
-const { options } = require('../routes');
 const Pelicula = mongoose.model('Pelicula');
 
 function crearPelicula(req, res, next) {
@@ -10,7 +9,6 @@ function crearPelicula(req, res, next) {
 
 	const pelicula = new Pelicula(body);
 
-	// res.send(pelicula);
 	pelicula
 		.validate()
 		.then((result) => {
@@ -29,11 +27,14 @@ function crearPelicula(req, res, next) {
 function crearMongoQuery(params) {
 	const { genero, duracion, duracionMin, duracionMax, estreno, estrenoMin, estrenoMax } = params;
 
+	//Verificar que los parámetros existentes tengan un valor válido para ser contados
 	const filtros = [ genero, duracion, duracionMin, duracionMax, estreno, estrenoMin, estrenoMax ].filter(
 		(filtro) => filtro !== undefined
 	);
+	//objeto que representan las reglas en mongodb
 	let rules = {};
-	if (filtros.length > 1) {
+	//Si hay mas de un flitro agregar el operador $and al query
+	if (filtros.length > 0) {
 		rules = {
 			$and: []
 		};
@@ -44,14 +45,18 @@ function crearMongoQuery(params) {
 			// Si genero es un array , regresa una regla OR en válida en MongoDB
 			const generos = genero.map((g) => ({ genero: g }));
 			rules['$and'].push({ $or: generos });
-			console.log(rules['$and']);
 			// ${or : [ {genero : "genero1"}, {genero: "genero2"}, ...{genero:"generoN"}]}
 		}
 
+		//Si el parametro duracion existe agregar la regla
 		if (duracion) {
+			//agregar la regla de igualdad para la propiedad duración
 			rules['$and'].push({ duracion: duracion });
 		} else {
+			//Si el parámetro duracion no existe
+			//verificar si los parámetros de duracion min-max existen
 			if (duracionMin && duracionMax) {
+				//Si los dos existen agregarlos en una regla $and
 				rules['$and'].push({
 					$and: [
 						{
@@ -67,6 +72,7 @@ function crearMongoQuery(params) {
 					]
 				});
 			} else {
+				//Si no existen los dos parámetros, agregarlos independientemente
 				if (duracionMin)
 					rules['$and'].push({
 						duracion: {
@@ -82,11 +88,15 @@ function crearMongoQuery(params) {
 					});
 			}
 		}
-
+		//Si el parametro estreno existe agregar la regla
 		if (estreno) {
+			//agregar la regla de igualdad para la propiedad estreno
 			rules['$and'].push({ estreno: estreno });
 		} else {
+			//Si el parámetro estreno no existe
+			//verificar si los parámetros de estreno min-max existen
 			if (estrenoMin && estrenoMax) {
+				//Si los dos existen agregarlos en una regla $and
 				rules['$and'].push({
 					$and: [
 						{
@@ -102,6 +112,7 @@ function crearMongoQuery(params) {
 					]
 				});
 			} else {
+				//Si no existen los dos parámetros, agregarlos independientemente
 				if (estrenoMin)
 					rules['$and'].push({
 						estreno: {
@@ -118,7 +129,7 @@ function crearMongoQuery(params) {
 			}
 		}
 	}
-
+	//regresar el objeto completo con las reglas creadas
 	return rules;
 }
 
