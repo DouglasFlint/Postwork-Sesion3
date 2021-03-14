@@ -208,7 +208,18 @@ function modificarPelicula(req, res, next) {
 
 	if (typeof poster !== 'undefined') update.poster = poster;
 
-	if (typeof estrellas !== 'undefined') update.estrellas = estrellas;
+	if (typeof estrellas !== 'undefined') {
+		update.estrellas = {};
+		//Hacer un ciclo del 1 al 5 para verificar que la propiedad que representa el numero de estrellas exista
+		//estrellas: {1,2,3,4,5}
+		for (let index = 1; index < 6; index++) {
+			const numeroDeEstrellas = index.toString();
+			if (typeof estrellas[numeroDeEstrellas] !== 'undefined')
+				update.estrellas[numeroDeEstrellas] = estrellas[numeroDeEstrellas];
+		}
+		//Si la propiedad estrellas existe pero sin ningún valor, elimina la propiedad de la actualizacion para evitar borrar la información original de peliculas.estrellas
+		if (Object.keys(update.estrellas).length === 0) delete update.estrellas;
+	}
 
 	Pelicula.findByIdAndUpdate(id, update)
 		.then(() => {
