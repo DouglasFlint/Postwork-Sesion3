@@ -18,66 +18,180 @@ function registroUsuario(req, res, next) {
 		.catch(next);
 }
 
-function obtenerUsuarioPorId(req, res, next) {
-	Usuario.findById(req.usuario.id, (err, user) => {
-		if (!user || err) {
-			return res.status(401).send('Error, el usuario no existe');
+function createMongoParams(params) {
+  // El username y email son unicos y no se toma en cuenta en esta consulta
+	const { nombre, apellido, genero, edad, edadMin, edadMax, tipo } = params;
+	const filtros = Object.keys(params);
+
+	let rules = {};
+	if (filtros.length > 0) {
+		rules = {
+			$and: []
+		};
+    //para cuando solo hay un nombre
+    if (typeof nombre === 'string') {
+			rules['$and'].push({ nombre: nombre });
+      //Cuando hay un arreglo de nombres
+		} else if (typeof nombre === 'object') {
+			const nombres = nombre.map((nom) => ({ nombre: nom}));
+			rules['$and'].push({ $or: nombres });
+			console.log(rules['$and']);
 		}
-		return res.status(200).json(user.publicData());
-	}).catch(next);
+
+    if (typeof apellido === 'string') {
+			rules['$and'].push({ apellido: apellido });
+		} else if (typeof apellido === 'object') {
+			const apellidos = apellido.map((ape) => ({ apellido: ape }));
+			rules['$and'].push({ $or: apellidos });
+			console.log(rules['$and']);
+		}
+
+    //Solo hay dos opciones, por lo tanto se asigna directamente
+    if (genero) {
+			rules['$and'].push({ genero: genero });
+		}
+
+    
+		if (edad) {
+			rules['$and'].push({ edad: edad });
+		} else {
+			if (edadMin && edadMax) {
+				rules['$and'].push({
+					$and: [
+						{
+							edad: {
+								$gte: edadMin
+							}
+						},
+						{
+							edad: {
+								$lte: edadMax
+							}
+						}
+					]
+				});
+			} else {
+				if (edadMin)
+					rules['$and'].push({
+						edad: {
+							$gte: edadMin
+						}
+					});
+
+				if (edadMax)
+					rules['$and'].push({
+						edad: {
+							$lte: edadMax
+						}
+					});
+			}
+		}
+
+    if (typeof tipo === 'number') {
+			rules['$and'].push({ tipo: tipo });
+		} else if (typeof tipo === 'object') {
+			const tipos = tipo.map((tip) => ({ tipo: tip }));
+			rules['$and'].push({ $or: tipos });
+			console.log(rules['$and']);
+		}
+
+	}
+  // si no hay filtros entonces se borra la informacion del objeto
+  if(rules.$and.length === 0) {
+    delete rules.$and;
+  }
+
+	return rules;
 }
 
+function obtenerUsuarioPorId(req, res, next) {
+  Usuario.findById(req.params.id, (err, user) => {
+    if (!user || err) {
+      return res.sendStatus(401).send('Error, el usuario no existe');
+    }
+    return res.status(200).json(user.publicData());
+  }).catch(next);
+}
+
+
 function obtenerUsuarios(req, res, next) {
-	Usuario.find({}, (err, users) => {
-		if (!users.length || err) {
+	const { query } = req;
+  // funcion que crea un query para filtrar consultas
+	let mongoQuery = createMongoParams(query);
+  let campo = query.campo;
+  let limit = query.limit;
+  let projection;
+  let documents;
+  // arreglo de campos para mostrar en projection del tipo ["username", "nombre"]
+  if (campo && typeof campo === "object") {
+    // se convierte el arreglo a cadena
+    projection = campo.join(" ");
+    // cuando solo se tiene un campo
+  } else if (campo && typeof campo === "string") {
+    projection = campo;
+  } else {
+    projection = "";
+  }
+  // Se agrega un limite de los campos a mostrar
+  if(limit) {
+    documents = parseInt(limit);
+  }
+	Usuario.find(mongoQuery, projection, (err, users) => {
+    
+		if (!users || err) {
 			return res.status(404).send('Ninguna conincidencia fué encontrada');
 		}
-		var userMap = {};
+		var array = [];
 
 		users.forEach(function(user) {
-			userMap[user._id] = user.publicData();
+			array.push(user);
 		});
 
-		res.status(200).send(userMap);
-	}).catch(next);
+		res.status(200).send(array);
+	}).limit(documents).
+  catch(next);
 }
 
 function modificarUsuario(req, res, next) {
-	// console.log(req.usuario);
-	Usuario.findById(req.usuario.id)
-		.then((user) => {
-			if (!user) {
-				return res.status(401);
-			}
-			let nuevaInfo = req.body;
-			if (typeof nuevaInfo.username !== 'undefined') user.username = nuevaInfo.username;
-			if (typeof nuevaInfo.nombre !== 'undefined') user.nombre = nuevaInfo.nombre;
-			if (typeof nuevaInfo.apellido !== 'undefined') user.apellido = nuevaInfo.apellido;
-			if (typeof nuevaInfo.genero !== 'undefined') user.genero = nuevaInfo.genero;
-			if (typeof nuevaInfo.edad !== 'undefined') user.edad = nuevaInfo.edad;
-			if (typeof nuevaInfo.tipo !== 'undefined') user.tipo = nuevaInfo.tipo;
-			if (typeof nuevaInfo.password !== 'undefined') user.crearPassword(nuevaInfo.password);
-			user
-				.save()
-				.then((updatedUser) => {
-					res.status(201).json(updatedUser.publicData());
-				})
-				.catch(next);
+	// metodo para modificar usuarios, si no encuentra campos no los toma en cuenta
+  const id = req.params.id;
+	let modificacion = {};
+	const { username, nombre, apellido, genero, edad, email, tipo } = req.body;
+
+  if (typeof username !== 'undefined') modificacion.username = username;
+
+	if (typeof nombre !== 'undefined') modificacion.nombre = nombre;
+
+	if (typeof apellido !== 'undefined') modificacion.apellido = apellido;
+
+	if (typeof genero !== 'undefined') modificacion.genero = genero;
+
+	if (typeof edad !== 'undefined') modificacion.edad = edad;
+
+  if (typeof email !== 'undefined') modificacion.email = email;
+
+	if (typeof tipo !== 'undefined') modificacion.tipo = tipo;
+
+	Usuario.findByIdAndUpdate(id, modificacion)
+		.then(() => {
+			return res.status(200).send({ estado: 'Usuario modificado exitosamente' });
 		})
 		.catch(next);
 }
 
-function eliminarUsuario(req, res) {
-	// únicamente borra a su propio usuario obteniendo el id del token
-	Usuario.findOneAndDelete({ _id: req.usuario.id })
-		.then((r) => {
-			//Buscando y eliminando usuario en MongoDB.
-			if (!r) {
+
+function eliminarUsuario(req, res, next) {
+  // únicamente borra a su propio usuario obteniendo el id del token
+  const id = req.params.id;
+	Usuario.findByIdAndDelete(id)
+		.then((result) => {
+			if (!result) {
 				return res.status(404).send('Usuario no encontrado');
 			}
-			res.status(200).send(`Usuario ${req.params.id} eliminado: ${r}`);
+      console.log()
+			res.status(200).json({ estado: `Usuario con id ${id} y username ${result.username} eliminado`, usuario: result });
 		})
-		.catch(next);
+  .catch(next);
 }
 
 function iniciarSesion(req, res, next) {
@@ -109,5 +223,5 @@ module.exports = {
 	obtenerUsuarioPorId,
 	modificarUsuario,
 	eliminarUsuario,
-	iniciarSesion
+	iniciarSesion,
 };

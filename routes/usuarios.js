@@ -6,7 +6,7 @@ const {
 	obtenerUsuarioPorId,
 	modificarUsuario,
 	eliminarUsuario,
-	iniciarSesion
+	iniciarSesion, 
 } = require('../controllers/usuarios');
 const auth = require('./auth');
 
