@@ -28,8 +28,10 @@ function createMongoParams(params) {
 		rules = {
 			$and: []
 		};
+    //para cuando solo hay un nombre
     if (typeof nombre === 'string') {
 			rules['$and'].push({ nombre: nombre });
+      //Cuando hay un arreglo de nombres
 		} else if (typeof nombre === 'object') {
 			const nombres = nombre.map((nom) => ({ nombre: nom}));
 			rules['$and'].push({ $or: nombres });
@@ -44,6 +46,7 @@ function createMongoParams(params) {
 			console.log(rules['$and']);
 		}
 
+    //Solo hay dos opciones, por lo tanto se asigna directamente
     if (genero) {
 			rules['$and'].push({ genero: genero });
 		}
@@ -93,6 +96,7 @@ function createMongoParams(params) {
 		}
 
 	}
+  // si no hay filtros entonces se borra la informacion del objeto
   if(rules.$and.length === 0) {
     delete rules.$and;
   }
@@ -112,20 +116,23 @@ function obtenerUsuarioPorId(req, res, next) {
 
 function obtenerUsuarios(req, res, next) {
 	const { query } = req;
+  // funcion que crea un query para filtrar consultas
 	let mongoQuery = createMongoParams(query);
   let campo = query.campo;
   let limit = query.limit;
   let projection;
   let documents;
-  console.log(campo)
-  console.log(mongoQuery)
+  // arreglo de campos para mostrar en projection del tipo ["username", "nombre"]
   if (campo && typeof campo === "object") {
+    // se convierte el arreglo a cadena
     projection = campo.join(" ");
+    // cuando solo se tiene un campo
   } else if (campo && typeof campo === "string") {
     projection = campo;
   } else {
     projection = "";
   }
+  // Se agrega un limite de los campos a mostrar
   if(limit) {
     documents = parseInt(limit);
   }
@@ -141,11 +148,12 @@ function obtenerUsuarios(req, res, next) {
 		});
 
 		res.status(200).send(array);
-	}).limit(documents).catch(next);
+	}).limit(documents).
+  catch(next);
 }
 
 function modificarUsuario(req, res, next) {
-	// console.log(req.usuario);
+	// metodo para modificar usuarios, si no encuentra campos no los toma en cuenta
   const id = req.params.id;
 	let modificacion = {};
 	const { username, nombre, apellido, genero, edad, email, tipo } = req.body;
