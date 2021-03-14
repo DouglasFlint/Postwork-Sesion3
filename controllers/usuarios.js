@@ -128,12 +128,31 @@ function obtenerCamposUsuarios(req, res, next) {
   const { query } = req;
   console.log(query)
   let fields;
-  if(query.length > 0) {
-    fields = query.campo.join(" "); 
+  let documents;
+  // Si en los params viene el campo
+  if(Object.keys(query).length > 0 && Object.keys(query).includes("campo")) {
+    documents = "";
+    // Si es un solo campo
+    if(typeof query.campo === "string") {
+      fields = query.campo;
+      // Si es un arreglo de campos tipo ["username", "nombre"]
+    } else if(typeof query.campo === "object") {
+      //Convierte el arreglo a un string para meterlo en el select
+      fields = query.campo.join(" "); 
+    }
+    
+  }
+  // Si en los params viene el numero de registros
+  else if(Object.keys(query).length > 0 && Object.keys(query).includes("registro")) {
+    field = "";
+    //guarda el numero que le pasa el usuario para despues meterlo en el limit
+    documents = parseInt(query.registro);
   }
   else {
     fields = "";
+    documents = "";
   }
+  console.log(fields)
   Usuario.find({}, (err, users) => {
 		if (!users.length || err) {
 			return res.status(404).send('Ninguna conincidencia fué encontrada');
@@ -145,7 +164,7 @@ function obtenerCamposUsuarios(req, res, next) {
 		});
 
 		res.status(200).send(userMap);
-	}).select(fields).catch(next);
+	}).select(fields).limit(documents).catch(next);
 }
 
 function modificarUsuario(req, res, next) {
