@@ -1,6 +1,7 @@
 /*  Archivo controllers/peliculas.js*/
 
 const mongoose = require('mongoose');
+const { options } = require('../routes');
 const Pelicula = mongoose.model('Pelicula');
 
 function crearPelicula(req, res, next) {
@@ -24,34 +25,6 @@ function crearPelicula(req, res, next) {
 			res.status(400).send(err.message);
 		});
 }
-
-// class MongoQuery {
-// 	constructor(filtros) {
-// 		this.conMultiplesFiltros = undefined;
-// 		this.base = {};
-// 		this.filtros = filtros;
-// 	}
-
-// 	definirBase() {
-// 		const numeroFiltros = Object.keys(params).length;
-// 		if (numeroFiltros > 1) this.base = { $and: {} };
-// 		this.conMultiplesFiltros = numeroFiltros > 1;
-// 	}
-
-// 	createQuery() {
-// 		this.filtros.forEach((filtro) => {});
-// 	}
-
-// 	esReglaOr(filtro) {
-// 		return typeof filtro === 'object';
-// 	}
-
-// 	agregarRegla(regla) {
-// 		if (this.conMultiplesFiltros) {
-// 			this.base.
-// 		}
-// 	}
-// }
 
 function crearMongoQuery(params) {
 	const { genero, duracion, duracionMin, duracionMax, estreno, estrenoMin, estrenoMax } = params;
@@ -219,7 +192,7 @@ function modificarPelicula(req, res, next) {
 	const id = req.params.id;
 	let update = {};
 
-	const { nombre, duracion, genero, sinopsis, director, estreno, poster, calPromedio } = req.body;
+	const { nombre, duracion, genero, sinopsis, director, estreno, poster, estrellas } = req.body;
 
 	if (typeof nombre !== 'undefined') update.nombre = nombre;
 
@@ -235,7 +208,7 @@ function modificarPelicula(req, res, next) {
 
 	if (typeof poster !== 'undefined') update.poster = poster;
 
-	if (typeof calPromedio !== 'undefined') update.calPromedio = calPromedio;
+	if (typeof estrellas !== 'undefined') update.estrellas = estrellas;
 
 	Pelicula.findByIdAndUpdate(id, update)
 		.then(() => {
