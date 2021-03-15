@@ -161,11 +161,9 @@ function obtenerUsuarios(req, res, next) {
 }
 
 function modificarUsuario(req, res, next) {
+	// metodo para modificar usuarios, si no encuentra campos no los toma en cuenta
 	const id = req.params.id;
-	const usuarioAutenticado = res.locals.user;
-	//verificar si el id del usuario autenticado coincide con el id del usuario a modificar
-	//si el usuario autenticado es admin , puede modificar el usuario
-	if (usuarioAutenticado.id === id || usuarioAutenticado.tipo === 0) {
+	if (req.params.id === res.locals.user.id || res.locals.user.tipo === 0) {
 		let modificacion = {};
 		const { username, nombre, apellido, genero, edad, email, tipo } = req.body;
 
@@ -180,9 +178,8 @@ function modificarUsuario(req, res, next) {
 		if (typeof edad !== 'undefined') modificacion.edad = edad;
 
 		if (typeof email !== 'undefined') modificacion.email = email;
-		//Verificar que tipo no sea undefinido y el usuario autenticado sea admin
-		//usuarios normales no pueden modificar su tipo
-		if (typeof tipo !== 'undefined' && usuarioAutenticado.tipo === 0) modificacion.tipo = tipo;
+
+		if (typeof tipo !== 'undefined') modificacion.tipo = tipo;
 
 		Usuario.findByIdAndUpdate(id, modificacion, function(err, doc) {
 			if (err) return next(err);
