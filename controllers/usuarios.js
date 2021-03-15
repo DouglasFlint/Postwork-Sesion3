@@ -186,10 +186,11 @@ function modificarUsuario(req, res, next) {
 
 		Usuario.findByIdAndUpdate(id, modificacion, function(err, doc) {
 			if (err) return next(err);
-			return res.status(200).send({ estado: 'Usuario modificado exitosamente' });
+			return res.status(200).json({ estado: 'Usuario modificado exitosamente' });
 		});
+	} else {
+		return res.status(401).send('No tienes permisos para modificar este usuario');
 	}
-	return res.status(401).send('No tienes permisos para modificar este usuario');
 }
 
 function eliminarUsuario(req, res, next) {
