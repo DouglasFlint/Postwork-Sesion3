@@ -31,10 +31,10 @@ function crearPelicula(req, res, next) {
 }
 
 function crearMongoQuery(params) {
-	const { genero, duracion, duracionMin, duracionMax, estreno, estrenoMin, estrenoMax } = params;
+	const { genero, duracion, duracionMin, duracionMax, estreno, estrenoMin, estrenoMax, nombre } = params;
 
 	//Verificar que los parámetros existentes tengan un valor válido para ser contados
-	const filtros = [ genero, duracion, duracionMin, duracionMax, estreno, estrenoMin, estrenoMax ].filter(
+	const filtros = [ genero, duracion, duracionMin, duracionMax, estreno, estrenoMin, estrenoMax, nombre ].filter(
 		(filtro) => filtro !== undefined
 	);
 	//objeto que representan las reglas en mongodb
@@ -44,6 +44,11 @@ function crearMongoQuery(params) {
 		rules = {
 			$and: []
 		};
+
+		if (typeof nombre === 'string') {
+			rules['$and'].push({ nombre: nombre });
+		}
+
 		if (typeof genero === 'string') {
 			// Un genero
 			rules['$and'].push({ genero: genero });
@@ -158,7 +163,7 @@ function obtenerPeliculas(req, res, next) {
 	//Si el límite de resultados es definido por esl usuario agregar el limite en las opciones , caso contrario, redolver un objeti vacio
 	const options = limitNumer ? { limit: limitNumer } : {};
 	let mongoQuery = crearMongoQuery(query);
-
+	console.log(mongoQuery);
 	Pelicula.find(mongoQuery, projection, options)
 		.then((peliculas) => {
 			if (!peliculas.length) {
