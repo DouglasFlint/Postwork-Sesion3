@@ -1,7 +1,6 @@
 /*  Archivo controllers/peliculas.js*/
 
 const mongoose = require('mongoose');
-const { options } = require('../routes');
 const Pelicula = mongoose.model('Pelicula');
 
 function crearPelicula(req, res, next) {
@@ -10,7 +9,6 @@ function crearPelicula(req, res, next) {
 
 	const pelicula = new Pelicula(body);
 
-	// res.send(pelicula);
 	pelicula
 		.validate()
 		.then((result) => {
@@ -26,11 +24,16 @@ function crearPelicula(req, res, next) {
 		});
 }
 
-function createMongoParams(params) {
+function crearMongoQuery(params) {
 	const { genero, duracion, duracionMin, duracionMax, estreno, estrenoMin, estrenoMax } = params;
-	const filtros = Object.keys(params);
 
+	//Verificar que los parámetros existentes tengan un valor válido para ser contados
+	const filtros = [ genero, duracion, duracionMin, duracionMax, estreno, estrenoMin, estrenoMax ].filter(
+		(filtro) => filtro !== undefined
+	);
+	//objeto que representan las reglas en mongodb
 	let rules = {};
+	//Si hay mas de un flitro agregar el operador $and al query
 	if (filtros.length > 0) {
 		rules = {
 			$and: []
@@ -42,14 +45,18 @@ function createMongoParams(params) {
 			// Si genero es un array , regresa una regla OR en válida en MongoDB
 			const generos = genero.map((g) => ({ genero: g }));
 			rules['$and'].push({ $or: generos });
-			console.log(rules['$and']);
 			// ${or : [ {genero : "genero1"}, {genero: "genero2"}, ...{genero:"generoN"}]}
 		}
 
+		//Si el parametro duracion existe agregar la regla
 		if (duracion) {
+			//agregar la regla de igualdad para la propiedad duración
 			rules['$and'].push({ duracion: duracion });
 		} else {
+			//Si el parámetro duracion no existe
+			//verificar si los parámetros de duracion min-max existen
 			if (duracionMin && duracionMax) {
+				//Si los dos existen agregarlos en una regla $and
 				rules['$and'].push({
 					$and: [
 						{
@@ -65,6 +72,7 @@ function createMongoParams(params) {
 					]
 				});
 			} else {
+				//Si no existen los dos parámetros, agregarlos independientemente
 				if (duracionMin)
 					rules['$and'].push({
 						duracion: {
@@ -80,11 +88,15 @@ function createMongoParams(params) {
 					});
 			}
 		}
-
+		//Si el parametro estreno existe agregar la regla
 		if (estreno) {
+			//agregar la regla de igualdad para la propiedad estreno
 			rules['$and'].push({ estreno: estreno });
 		} else {
+			//Si el parámetro estreno no existe
+			//verificar si los parámetros de estreno min-max existen
 			if (estrenoMin && estrenoMax) {
+				//Si los dos existen agregarlos en una regla $and
 				rules['$and'].push({
 					$and: [
 						{
@@ -100,6 +112,7 @@ function createMongoParams(params) {
 					]
 				});
 			} else {
+				//Si no existen los dos parámetros, agregarlos independientemente
 				if (estrenoMin)
 					rules['$and'].push({
 						estreno: {
@@ -116,38 +129,44 @@ function createMongoParams(params) {
 			}
 		}
 	}
-
+	//regresar el objeto completo con las reglas creadas
 	return rules;
 }
 
 function obtenerPeliculas(req, res, next) {
+	//Obtener todos los parametros
 	const { query } = req;
-	let mongoQuery = createMongoParams(query);
-	let options = {};
-	Pelicula.find(mongoQuery, options).then((peliculas) => {
-		if (!peliculas.length) {
-			return res.status(404).send('Ninguna conincidencia fué encontrada');
-		}
-		return res.status(200).json(peliculas);
-	});
+	//Obtener los parametros campo y limit
+	const { campo, limit } = query;
+	//crear projection que es un String que especifica que campos devolver en la consulta
+	const projection =
+		campo && typeof campo === 'object'
+			? // crear un string con los campos definidos en el array campos
+				campo.join(' ')
+			: //si solo se ha pasado un campo , devolver el valor del campo
+				typeof campo === 'string'
+				? campo
+				: //si ningun campo fue especificado devolver un string vacío
+					'';
+	const limitNumer = parseInt(limit);
+	//Si el límite de resultados es definido por esl usuario agregar el limite en las opciones , caso contrario, redolver un objeti vacio
+	const options = limitNumer ? { limit: limitNumer } : {};
+	let mongoQuery = crearMongoQuery(query);
+
+	Pelicula.find(mongoQuery, projection, options)
+		.then((peliculas) => {
+			if (!peliculas.length) {
+				return res.status(404).send('Ninguna conincidencia fué encontrada');
+			}
+			return res.status(200).json(peliculas);
+		})
+		.catch(next);
 }
-// function obtenerPeliculasPorGenero(req, res, next) {
-// 	const genero = req.params.genero;
-// 	Pelicula.find({ genero: genero })
-// 		.then((results) => {
-// 			if (!results) {
-// 				return res.status(404).send('Ninguna película de este género fue encontrada');
-// 			}
-// 			return res.status(302).json(results);
-// 		})
-// 		.catch(next);
-// }
 
 function obtenerPeliculaPorID(req, res, next) {
 	const id = req.params.id;
-	if (!id) {
-		res.status(400).send('Parámetro "id" inexistente');
-	}
+	if (!id) res.status(400).send('Parámetro "id" inexistente');
+
 	Pelicula.findOne({ _id: id })
 		.then((pelicula) => {
 			if (!pelicula) {
@@ -158,11 +177,33 @@ function obtenerPeliculaPorID(req, res, next) {
 		.catch(next);
 }
 
+function obtenerCamposPeliculas(req, res, next) {
+	//Obtener los campos a devolver en el
+	const { campo, limit } = req.query;
+	//el string projection especifica que campos devolver en la consulta
+	const projection =
+		campo && typeof campo === 'object'
+			? // crear un string con los campos definidos en el array campos
+				campo.join(' ')
+			: //si solo se ha pasado un campo , devolver el valor del campo
+				typeof campo === 'string'
+				? campo
+				: //si ningun campo fue especificado devolver un string vacío
+					'';
+	const limitNumer = parseInt(limit);
+	//Si el límite de resultados es definido por esl usuario agregar el limite en las opciones , caso contrario, redolver un objeti vacio
+	const options = limitNumer ? { limit: limitNumer } : {};
+	Pelicula.find({}, projection, options, (err, peliculas) => {
+		if (err) next(err);
+		return res.send(peliculas);
+	});
+}
+
 function modificarPelicula(req, res, next) {
 	const id = req.params.id;
 	let update = {};
 
-	const { nombre, duracion, genero, sinopsis, director, estreno, poster, calPromedio } = req.body;
+	const { nombre, duracion, genero, sinopsis, director, estreno, poster, estrellas } = req.body;
 
 	if (typeof nombre !== 'undefined') update.nombre = nombre;
 
@@ -178,7 +219,18 @@ function modificarPelicula(req, res, next) {
 
 	if (typeof poster !== 'undefined') update.poster = poster;
 
-	if (typeof calPromedio !== 'undefined') update.calPromedio = calPromedio;
+	if (typeof estrellas !== 'undefined') {
+		update.estrellas = {};
+		//Hacer un ciclo del 1 al 5 para verificar que la propiedad que representa el numero de estrellas exista
+		//estrellas: {1,2,3,4,5}
+		for (let index = 1; index < 6; index++) {
+			const numeroDeEstrellas = index.toString();
+			if (typeof estrellas[numeroDeEstrellas] !== 'undefined')
+				update.estrellas[numeroDeEstrellas] = estrellas[numeroDeEstrellas];
+		}
+		//Si la propiedad estrellas existe pero sin ningún valor, elimina la propiedad de la actualizacion para evitar borrar la información original de peliculas.estrellas
+		if (Object.keys(update.estrellas).length === 0) delete update.estrellas;
+	}
 
 	Pelicula.findByIdAndUpdate(id, update)
 		.then(() => {
@@ -202,6 +254,7 @@ module.exports = {
 	crearPelicula,
 	obtenerPeliculas,
 	obtenerPeliculaPorID,
+	obtenerCamposPeliculas,
 	modificarPelicula,
 	eliminarPelicula
 };

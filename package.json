@@ -1,37 +1,40 @@
 {
-  "name": "peliculas-api",
-  "version": "1.0.0",
-  "description": "Este proyecto es una API REST construida en NODEJS que tiene como objetivo obtener recomendaciones de peliculas. Criticos pueden dar su calificacion y su respectiva reseña a las peliculas agregadas por los administradores y los  demas usuarios pueden ver estas recomendaciones para poder elegir las peliculas que mas les pueden gustar.",
-  "main": "app.js",
-  "scripts": {
-    "start": "node ./app.js",
-    "dev": "nodemon ./app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/PaulinaQuintero/Postwork-Sesion3.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/PaulinaQuintero/Postwork-Sesion3/issues"
-  },
-  "homepage": "https://github.com/PaulinaQuintero/Postwork-Sesion3#readme",
-  "dependencies": {
-    "-": "0.0.1",
-    "body-parser": "^1.19.0",
-    "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "express-jwt": "^6.0.0",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.11.20",
-    "mongoose-unique-validator": "^2.0.3",
-    "nodemon": "^2.0.7",
-    "passport": "^0.4.1",
-    "passport-local": "^1.0.0",
-    "save": "^2.4.0"
-  }
+	"name": "peliculas-api",
+	"version": "1.0.0",
+	"description": "Este proyecto es una API REST construida en NODEJS que tiene como objetivo obtener recomendaciones de peliculas. Criticos pueden dar su calificacion y su respectiva reseña a las peliculas agregadas por los administradores y los  demas usuarios pueden ver estas recomendaciones para poder elegir las peliculas que mas les pueden gustar.",
+	"main": "app.js",
+	"scripts": {
+		"start": "node app.js",
+		"dev": "nodemon ./app.js",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"engines": {
+		"node": "8.9.3"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/PaulinaQuintero/Postwork-Sesion3.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/PaulinaQuintero/Postwork-Sesion3/issues"
+	},
+	"homepage": "https://github.com/PaulinaQuintero/Postwork-Sesion3#readme",
+	"dependencies": {
+		"-": "0.0.1",
+		"body-parser": "^1.19.0",
+		"cors": "^2.8.5",
+		"dotenv": "^8.2.0",
+		"express": "^4.17.1",
+		"express-jwt": "^6.0.0",
+		"jsonwebtoken": "^8.5.1",
+		"mongoose": "^5.11.20",
+		"mongoose-unique-validator": "^2.0.3",
+		"nodemon": "^2.0.7",
+		"passport": "^0.4.1",
+		"passport-local": "^1.0.0",
+		"save": "^2.4.0"
+	}
 }
