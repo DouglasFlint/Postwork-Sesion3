@@ -9,12 +9,13 @@ const {
 	iniciarSesion, 
 } = require('../controllers/usuarios');
 const auth = require('./auth');
+const permissions = require('./permissions');
 
 router.get('/', auth.requerido, obtenerUsuarios);
 router.get('/:id', auth.requerido, obtenerUsuarioPorId);
 router.post('/', registroUsuario);
 router.post('/entrar', iniciarSesion);
-router.put('/:id', auth.requerido, modificarUsuario);
-router.delete('/:id', auth.requerido, eliminarUsuario);
+router.put('/:id', auth.requerido, permissions, modificarUsuario);
+router.delete('/:id', auth.requerido, permissions, eliminarUsuario);
 
 module.exports = router;

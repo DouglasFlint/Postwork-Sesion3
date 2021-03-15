@@ -168,7 +168,19 @@ function obtenerUsuarios(req, res, next) {
 
 function modificarUsuario(req, res, next) {
 	// metodo para modificar usuarios, si no encuentra campos no los toma en cuenta
-  const id = req.params.id;
+	console.log("El que lo intenta", res.locals.user.id)
+	let nombreUsuario; 
+	Usuario.findById(req.params.id, (err, user) => {
+		console.log("El que quiere modificar", user.id)
+		nombreUsuario = user.id;
+		console.log("nombreUSuario", nombreUsuario)
+	  }).then(() => {
+		nombreUsuario = user.id;
+	})
+	  console.log("son iguales?", nombreUsuario, res.locals.user.id)
+	  if(nombreUsuario == res.locals.user.id || res.locals.user.tipo === 0) {
+	console.log("")
+  	const id = req.params.id;
 	let modificacion = {};
 	const { username, nombre, apellido, genero, edad, email, tipo } = req.body;
 
@@ -188,16 +200,26 @@ function modificarUsuario(req, res, next) {
 
 	Usuario.findByIdAndUpdate(id, modificacion, function(err, doc) {
     if (err) return res.status(400).send("Error al modificar");
-  })
+})
 		.then(() => {
 			return res.status(200).send({ estado: 'Usuario modificado exitosamente' });
 		})
 		.catch(next);
+	} else {
+		return res.status(401).send("No tienes permisos para modificar este usuario");
+	}
 }
 
 
 function eliminarUsuario(req, res, next) {
   // únicamente borra a su propio usuario obteniendo el id del token
+  console.log("El que lo intenta", res.locals.user.id)
+	let nombreUsuario; 
+	Usuario.findById(req.params.id, (err, user) => {
+		console.log("El que quiere modificar", user.id)
+		nombreUsuario = user.id;
+	  })
+	  if(nombreUsuario === res.locals.user.id || res.locals.user.tipo === 0) {
   const id = req.params.id;
 	Usuario.findByIdAndDelete(id)
 		.then((result) => {
@@ -208,6 +230,9 @@ function eliminarUsuario(req, res, next) {
 			res.status(200).json({ estado: `Usuario con id ${id} y username ${result.username} eliminado`, usuario: result });
 		})
   .catch(next);
+	} else {
+		return res.status(401).send("No tienes permisos para eliminar este usuario");
+	}
 }
 
 function iniciarSesion(req, res, next) {
