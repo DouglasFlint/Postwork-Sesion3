@@ -178,7 +178,7 @@ function modificarUsuario(req, res, next) {
 		nombreUsuario = user.id;
 	})
 	  console.log("son iguales?", nombreUsuario, res.locals.user.id)
-	  if(nombreUsuario == res.locals.user.id || res.locals.user.tipo === 0) {
+	  if(nombreUsuario === res.locals.user.id || res.locals.user.tipo === 0) {
 	console.log("")
   	const id = req.params.id;
 	let modificacion = {};
