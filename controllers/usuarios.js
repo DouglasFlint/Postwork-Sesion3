@@ -93,15 +93,13 @@ function createMongoParams(params) {
 		}
 
 		if (typeof tipo === 'number') {
-			rules['$and'].push({ tipo: tipo });
+			rules['$and'].push({ tipo: parseInt(tipo) });
 		} else if (typeof tipo === 'object') {
 			const tipos = tipo.map((tip) => ({ tipo: tip }));
 			rules['$and'].push({ $or: tipos });
 		}
-	} 
-	
-	else if(Object.keys(rules).length === 0) {
-		return {}
+	} else if (Object.keys(rules).length === 0) {
+		return {};
 	}
 	// si no hay filtros entonces se borra la informacion del objeto
 	if (rules.$and.length === 0) {
@@ -164,34 +162,31 @@ function obtenerUsuarios(req, res, next) {
 
 function modificarUsuario(req, res, next) {
 	// metodo para modificar usuarios, si no encuentra campos no los toma en cuenta
-	  const id = req.params.id;
-	  if(req.params.id === res.locals.user.id || res.locals.user.tipo === 0) {
-	let modificacion = {};
-	const { username, nombre, apellido, genero, edad, email, tipo } = req.body;
+	const id = req.params.id;
+	if (req.params.id === res.locals.user.id || res.locals.user.tipo === 0) {
+		let modificacion = {};
+		const { username, nombre, apellido, genero, edad, email, tipo } = req.body;
 
-  if (typeof username !== 'undefined') modificacion.username = username;
+		if (typeof username !== 'undefined') modificacion.username = username;
 
-	if (typeof nombre !== 'undefined') modificacion.nombre = nombre;
+		if (typeof nombre !== 'undefined') modificacion.nombre = nombre;
 
-	if (typeof apellido !== 'undefined') modificacion.apellido = apellido;
+		if (typeof apellido !== 'undefined') modificacion.apellido = apellido;
 
-	if (typeof genero !== 'undefined') modificacion.genero = genero;
+		if (typeof genero !== 'undefined') modificacion.genero = genero;
 
-	if (typeof edad !== 'undefined') modificacion.edad = edad;
+		if (typeof edad !== 'undefined') modificacion.edad = edad;
 
-  if (typeof email !== 'undefined') modificacion.email = email;
+		if (typeof email !== 'undefined') modificacion.email = email;
 
-	if (typeof tipo !== 'undefined') modificacion.tipo = tipo;
+		if (typeof tipo !== 'undefined') modificacion.tipo = tipo;
 
-	Usuario.findByIdAndUpdate(id, modificacion, function(err, doc) {
-    if (err) return res.status(400).send("Error al modificar");
-})
-		.then(() => {
-			return res.status(200).send({ estado: 'Usuario modificado exitosamente' });
-		})
-		.catch(next);
+		Usuario.findByIdAndUpdate(id, modificacion, function(err, doc) {
+			if (err) return next(err);
+			return res.status(200).json({ estado: 'Usuario modificado exitosamente' });
+		});
 	} else {
-		return res.status(401).send("No tienes permisos para modificar este usuario");
+		return res.status(401).send('No tienes permisos para modificar este usuario');
 	}
 }
 
@@ -207,9 +202,7 @@ function eliminarUsuario(req, res, next) {
 					return res.status(404).send('Usuario no encontrado');
 				}
 				console.log();
-				res
-					.status(200)
-					.json({ estado: `Usuario con id ${id} y username ${result.username} eliminado`, usuario: result });
+				res.status(200).json({ estado: `Usuario con id ${id} y username ${result.username} eliminado` });
 			})
 			.catch(next);
 	} else {

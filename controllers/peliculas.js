@@ -16,27 +16,42 @@ function crearPelicula(req, res, next) {
 		pelicula
 			.validate()
 			.then((result) => {
-				pelicula
+				return pelicula
 					.save()
 					.then((register) => {
 						return res.status(201).send({ estado: 'Película añadida exitosamente', pelicula: register });
 					})
 					.catch(next);
 			})
-			.catch((err) => {
-				res.status(400).send(err.message);
-			});
+			.catch(next);
+	} else {
+		return res.status(401).json({ estado: 'No tienes permisos para realizar esta accion' });
 	}
-	return res.status(401).json({ estado: 'No tienes permisos para realizar esta accion' });
 }
 
 function crearMongoQuery(params) {
-	const { genero, duracion, duracionMin, duracionMax, estreno, estrenoMin, estrenoMax } = params;
+	const {
+		genero,
+		duracion,
+		duracionMin,
+		duracionMax,
+		estreno,
+		estrenoMin,
+		estrenoMax
+		// nombre
+	} = params;
 
 	//Verificar que los parámetros existentes tengan un valor válido para ser contados
-	const filtros = [ genero, duracion, duracionMin, duracionMax, estreno, estrenoMin, estrenoMax ].filter(
-		(filtro) => filtro !== undefined
-	);
+	const filtros = [
+		genero,
+		duracion,
+		duracionMin,
+		duracionMax,
+		estreno,
+		estrenoMin,
+		estrenoMax
+		// nombre
+	].filter((filtro) => filtro !== undefined);
 	//objeto que representan las reglas en mongodb
 	let rules = {};
 	//Si hay mas de un flitro agregar el operador $and al query
@@ -44,6 +59,11 @@ function crearMongoQuery(params) {
 		rules = {
 			$and: []
 		};
+
+		// if (typeof nombre === 'string') {
+		// 	rules['$and'].push({ nombre: nombre });
+		// }
+
 		if (typeof genero === 'string') {
 			// Un genero
 			rules['$and'].push({ genero: genero });
@@ -158,13 +178,14 @@ function obtenerPeliculas(req, res, next) {
 	//Si el límite de resultados es definido por esl usuario agregar el limite en las opciones , caso contrario, redolver un objeti vacio
 	const options = limitNumer ? { limit: limitNumer } : {};
 	let mongoQuery = crearMongoQuery(query);
-
+	console.log(mongoQuery);
 	Pelicula.find(mongoQuery, projection, options)
 		.then((peliculas) => {
 			if (!peliculas.length) {
 				return res.status(404).send('Ninguna conincidencia fué encontrada');
+			} else {
+				return res.status(200).json(peliculas);
 			}
-			return res.status(200).json(peliculas);
 		})
 		.catch(next);
 }
@@ -261,8 +282,9 @@ function eliminarPelicula(req, res, next) {
 				res.status(200).json({ estado: `Película ${id} eliminada`, pelicula: result });
 			})
 			.catch(next);
+	} else {
+		return res.status(401).json({ estado: 'No tienes permisos para realizar esta accion' });
 	}
-	return res.status(401).json({ estado: 'No tienes permisos para realizar esta accion' });
 }
 module.exports = {
 	crearPelicula,

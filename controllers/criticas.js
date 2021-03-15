@@ -58,7 +58,7 @@ function obtenerCriticas(req, res, next) {
 		.equals(peliculaID)
 		.exec()
 		.then((criticas) => {
-			res.status(200).send(criticas);
+			return res.status(200).send(criticas);
 		})
 		.catch(next);
 }
