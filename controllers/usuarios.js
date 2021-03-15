@@ -163,35 +163,36 @@ function obtenerUsuarios(req, res, next) {
 }
 
 function modificarUsuario(req, res, next) {
-	const id = req.params.id;
-	const usuarioAutenticado = res.locals.user;
-	//verificar si el id del usuario autenticado coincide con el id del usuario a modificar
-	//si el usuario autenticado es admin , puede modificar el usuario
-	if (usuarioAutenticado.id === id || usuarioAutenticado.tipo === 0) {
-		let modificacion = {};
-		const { username, nombre, apellido, genero, edad, email, tipo } = req.body;
+	// metodo para modificar usuarios, si no encuentra campos no los toma en cuenta
+	  const id = req.params.id;
+	  if(req.params.id === res.locals.user.id || res.locals.user.tipo === 0) {
+	let modificacion = {};
+	const { username, nombre, apellido, genero, edad, email, tipo } = req.body;
 
-		if (typeof username !== 'undefined') modificacion.username = username;
+  if (typeof username !== 'undefined') modificacion.username = username;
 
-		if (typeof nombre !== 'undefined') modificacion.nombre = nombre;
+	if (typeof nombre !== 'undefined') modificacion.nombre = nombre;
 
-		if (typeof apellido !== 'undefined') modificacion.apellido = apellido;
+	if (typeof apellido !== 'undefined') modificacion.apellido = apellido;
 
-		if (typeof genero !== 'undefined') modificacion.genero = genero;
+	if (typeof genero !== 'undefined') modificacion.genero = genero;
 
-		if (typeof edad !== 'undefined') modificacion.edad = edad;
+	if (typeof edad !== 'undefined') modificacion.edad = edad;
 
-		if (typeof email !== 'undefined') modificacion.email = email;
-		//Verificar que tipo no sea undefinido y el usuario autenticado sea admin
-		//usuarios normales no pueden modificar su tipo
-		if (typeof tipo !== 'undefined' && usuarioAutenticado.tipo === 0) modificacion.tipo = tipo;
+  if (typeof email !== 'undefined') modificacion.email = email;
 
-		Usuario.findByIdAndUpdate(id, modificacion, function(err, doc) {
-			if (err) return next(err);
+	if (typeof tipo !== 'undefined') modificacion.tipo = tipo;
+
+	Usuario.findByIdAndUpdate(id, modificacion, function(err, doc) {
+    if (err) return res.status(400).send("Error al modificar");
+})
+		.then(() => {
 			return res.status(200).send({ estado: 'Usuario modificado exitosamente' });
-		});
+		})
+		.catch(next);
+	} else {
+		return res.status(401).send("No tienes permisos para modificar este usuario");
 	}
-	return res.status(401).send('No tienes permisos para modificar este usuario');
 }
 
 function eliminarUsuario(req, res, next) {
