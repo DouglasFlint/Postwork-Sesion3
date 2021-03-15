@@ -26,8 +26,9 @@ function crearPelicula(req, res, next) {
 			.catch((err) => {
 				res.status(400).send(err.message);
 			});
+	} else {
+		return res.status(401).json({ estado: 'No tienes permisos para realizar esta accion' });
 	}
-	return res.status(401).json({ estado: 'No tienes permisos para realizar esta accion' });
 }
 
 function crearMongoQuery(params) {
@@ -282,8 +283,9 @@ function eliminarPelicula(req, res, next) {
 				res.status(200).json({ estado: `Película ${id} eliminada`, pelicula: result });
 			})
 			.catch(next);
+	} else {
+		return res.status(401).json({ estado: 'No tienes permisos para realizar esta accion' });
 	}
-	return res.status(401).json({ estado: 'No tienes permisos para realizar esta accion' });
 }
 module.exports = {
 	crearPelicula,
