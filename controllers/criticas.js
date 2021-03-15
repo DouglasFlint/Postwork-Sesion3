@@ -64,7 +64,7 @@ function obtenerCriticas(req, res, next) {
 }
 
 function modificarCritica(req, res, next) {
-	const { usuario } = req;
+	const usuarioAutenticado = res.locals.user;
 	const { comentario, calificacion } = req.body;
 	const { id } = req.params;
 	let modificaciones = { $set: {} };
@@ -74,9 +74,9 @@ function modificarCritica(req, res, next) {
 
 	Critica.findById(id, (err, critica) => {
 		if (err) return next(err);
-		if (!critica) return res.status(404).send('La crítica solicitada no existe');
+		if (!critica) return res.status(404).send({ estado: 'La crítica solicitada no existe' });
 		//Verificar que la crítica pertenezca al usuario actualmente autenticado
-		if (critica.idUsuario === usuario.id) {
+		if (critica.idUsuario === usuarioAutenticado.id) {
 			//Actualizar la informacion de la crítica
 			Critica.updateOne({ _id: id }, modificaciones, (err) => {
 				if (err) return next(err);
@@ -98,20 +98,20 @@ function modificarCritica(req, res, next) {
 				});
 			}
 		} else {
-			res.status(401).send('No tienes los permisos para modificar esta crítica');
+			res.status(401).send({ estado: 'No tienes permisos para realizar esta accion' });
 		}
 	});
 }
 
 function eliminarCritica(req, res, next) {
-	const { usuario } = req;
+	const usuarioAutenticado = res.locals.user;
 	const { id } = req.params;
 
 	Critica.findById(id, (err, critica) => {
 		if (err) return next(err);
-		if (!critica) return res.status(404).send('Crítica no encontrada');
+		if (!critica) return res.status(404).send({ estado: 'Crítica no encontrada' });
 		//Verificar que la crítica pertenezca al usuario actualmente autenticado
-		if (critica.idUsuario === usuario.id) {
+		if (critica.idUsuario === usuarioAutenticado.id) {
 			//Eliminar critica
 			Critica.deleteOne({ _id: id }, (err) => {
 				if (err) return next(err);

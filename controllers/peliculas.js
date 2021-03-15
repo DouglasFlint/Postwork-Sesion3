@@ -1,44 +1,46 @@
 /*  Archivo controllers/peliculas.js*/
 
 const mongoose = require('mongoose');
-const { options } = require('../routes');
 const Pelicula = mongoose.model('Pelicula');
 
 function crearPelicula(req, res, next) {
-	console.log("Mi tipo", res.locals.user.tipo) 
-	if(res.locals.user.tipo === 0) {
-	// Instancia de nueva pelicula usando la clase Pelicula
-	const body = req.body;
+	const usuarioAutenticado = res.locals.user;
+	//Validar que el usuario autenticado sea admin
+	if (usuarioAutenticado.tipo === 0) {
+		// Instancia de nueva pelicula usando la clase Pelicula
+		const body = req.body;
 
-	const pelicula = new Pelicula(body);
+		const pelicula = new Pelicula(body);
 
-	// res.send(pelicula);
-	pelicula
-		.validate()
-		.then((result) => {
-			pelicula
-				.save()
-				.then((register) => {
-					return res.status(201).send({ estado: 'Película añadida exitosamente', pelicula: register });
-				})
-				.catch(next);
-		})
-		.catch((err) => {
-			res.status(400).send(err.message);
-		});
-	} else {
-		return res.status(401).json({ estado: 'No tienes permisos para realizar esta accion' });
+		// res.send(pelicula);
+		pelicula
+			.validate()
+			.then((result) => {
+				pelicula
+					.save()
+					.then((register) => {
+						return res.status(201).send({ estado: 'Película añadida exitosamente', pelicula: register });
+					})
+					.catch(next);
+			})
+			.catch((err) => {
+				res.status(400).send(err.message);
+			});
 	}
+	return res.status(401).json({ estado: 'No tienes permisos para realizar esta accion' });
 }
 
 function crearMongoQuery(params) {
 	const { genero, duracion, duracionMin, duracionMax, estreno, estrenoMin, estrenoMax } = params;
 
+	//Verificar que los parámetros existentes tengan un valor válido para ser contados
 	const filtros = [ genero, duracion, duracionMin, duracionMax, estreno, estrenoMin, estrenoMax ].filter(
 		(filtro) => filtro !== undefined
 	);
+	//objeto que representan las reglas en mongodb
 	let rules = {};
-	if (filtros.length > 1) {
+	//Si hay mas de un flitro agregar el operador $and al query
+	if (filtros.length > 0) {
 		rules = {
 			$and: []
 		};
@@ -49,14 +51,18 @@ function crearMongoQuery(params) {
 			// Si genero es un array , regresa una regla OR en válida en MongoDB
 			const generos = genero.map((g) => ({ genero: g }));
 			rules['$and'].push({ $or: generos });
-			console.log(rules['$and']);
 			// ${or : [ {genero : "genero1"}, {genero: "genero2"}, ...{genero:"generoN"}]}
 		}
 
+		//Si el parametro duracion existe agregar la regla
 		if (duracion) {
+			//agregar la regla de igualdad para la propiedad duración
 			rules['$and'].push({ duracion: duracion });
 		} else {
+			//Si el parámetro duracion no existe
+			//verificar si los parámetros de duracion min-max existen
 			if (duracionMin && duracionMax) {
+				//Si los dos existen agregarlos en una regla $and
 				rules['$and'].push({
 					$and: [
 						{
@@ -72,6 +78,7 @@ function crearMongoQuery(params) {
 					]
 				});
 			} else {
+				//Si no existen los dos parámetros, agregarlos independientemente
 				if (duracionMin)
 					rules['$and'].push({
 						duracion: {
@@ -87,11 +94,15 @@ function crearMongoQuery(params) {
 					});
 			}
 		}
-
+		//Si el parametro estreno existe agregar la regla
 		if (estreno) {
+			//agregar la regla de igualdad para la propiedad estreno
 			rules['$and'].push({ estreno: estreno });
 		} else {
+			//Si el parámetro estreno no existe
+			//verificar si los parámetros de estreno min-max existen
 			if (estrenoMin && estrenoMax) {
+				//Si los dos existen agregarlos en una regla $and
 				rules['$and'].push({
 					$and: [
 						{
@@ -107,6 +118,7 @@ function crearMongoQuery(params) {
 					]
 				});
 			} else {
+				//Si no existen los dos parámetros, agregarlos independientemente
 				if (estrenoMin)
 					rules['$and'].push({
 						estreno: {
@@ -123,7 +135,7 @@ function crearMongoQuery(params) {
 			}
 		}
 	}
-
+	//regresar el objeto completo con las reglas creadas
 	return rules;
 }
 
@@ -195,9 +207,13 @@ function obtenerCamposPeliculas(req, res, next) {
 
 function modificarPelicula(req, res, next) {
 	const id = req.params.id;
-	let update = {};
+	const usuarioAutenticado = res.locals.user;
+	//Verificar que el usuario autenticado sea admin
+	//Usuarios normales no pueden editar la informacion de las peliculas
+	if (usuarioAutenticado.tipo !== 0)
+		return res.status(401).send({ estado: 'No tienes permisos para realizar esta accion' });
 
-	const { nombre, duracion, genero, sinopsis, director, estreno, poster, calPromedio } = req.body;
+	const { nombre, duracion, genero, sinopsis, director, estreno, poster, estrellas } = req.body;
 
 	if (typeof nombre !== 'undefined') update.nombre = nombre;
 
@@ -213,7 +229,18 @@ function modificarPelicula(req, res, next) {
 
 	if (typeof poster !== 'undefined') update.poster = poster;
 
-	if (typeof calPromedio !== 'undefined') update.calPromedio = calPromedio;
+	if (typeof estrellas !== 'undefined') {
+		update.estrellas = {};
+		//Hacer un ciclo del 1 al 5 para verificar que la propiedad que representa el numero de estrellas exista
+		//estrellas: {1,2,3,4,5}
+		for (let index = 1; index < 6; index++) {
+			const numeroDeEstrellas = index.toString();
+			if (typeof estrellas[numeroDeEstrellas] !== 'undefined')
+				update.estrellas[numeroDeEstrellas] = estrellas[numeroDeEstrellas];
+		}
+		//Si la propiedad estrellas existe pero sin ningún valor, elimina la propiedad de la actualizacion para evitar borrar la información original de peliculas.estrellas
+		if (Object.keys(update.estrellas).length === 0) delete update.estrellas;
+	}
 
 	Pelicula.findByIdAndUpdate(id, update)
 		.then(() => {
@@ -223,19 +250,19 @@ function modificarPelicula(req, res, next) {
 }
 
 function eliminarPelicula(req, res, next) {
-	if(res.locals.user.tipo === 0) {
-	const id = req.params.id;
-	Pelicula.findByIdAndDelete(id)
-		.then((result) => {
-			if (!result) {
-				return res.status(404).send('Película no encontrada');
-			}
-			res.status(200).json({ estado: `Película ${id} eliminada`, pelicula: result });
-		})
-		.catch(next);
-	} else {
-		return res.status(401).json({ estado: 'No tienes permisos para realizar esta accion' });
+	const usuarioAutenticado = res.locals.user;
+	if (usuarioAutenticado.tipo === 0) {
+		const id = req.params.id;
+		Pelicula.findByIdAndDelete(id)
+			.then((result) => {
+				if (!result) {
+					return res.status(404).send('Película no encontrada');
+				}
+				res.status(200).json({ estado: `Película ${id} eliminada`, pelicula: result });
+			})
+			.catch(next);
 	}
+	return res.status(401).json({ estado: 'No tienes permisos para realizar esta accion' });
 }
 module.exports = {
 	crearPelicula,
