@@ -16,16 +16,14 @@ function crearPelicula(req, res, next) {
 		pelicula
 			.validate()
 			.then((result) => {
-				pelicula
+				return pelicula
 					.save()
 					.then((register) => {
 						return res.status(201).send({ estado: 'Película añadida exitosamente', pelicula: register });
 					})
 					.catch(next);
 			})
-			.catch((err) => {
-				res.status(400).send(err.message);
-			});
+			.catch(next);
 	} else {
 		return res.status(401).json({ estado: 'No tienes permisos para realizar esta accion' });
 	}
