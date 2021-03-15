@@ -42,7 +42,6 @@ function createMongoParams(params) {
 		} else if (typeof nombre === 'object') {
 			const nombres = nombre.map((nom) => ({ nombre: nom }));
 			rules['$and'].push({ $or: nombres });
-			console.log(rules['$and']);
 		}
 
 		if (typeof apellido === 'string') {
@@ -51,7 +50,6 @@ function createMongoParams(params) {
 			//Usuarios.find({ '$and': [ { '$or': [ { apellido: 'quintero' }, { apellido: 'vazquez' } ] } )
 			const apellidos = apellido.map((ape) => ({ apellido: ape }));
 			rules['$and'].push({ $or: apellidos });
-			console.log(rules['$and']);
 		}
 
 		//Solo hay dos opciones, por lo tanto se asigna directamente
@@ -59,7 +57,6 @@ function createMongoParams(params) {
 			rules['$and'].push({ genero: genero });
 		}
 
-		// Usuarios.find({ '$and': [ { '$and': [ { edad: { '$gte': 20 } }, { edad: { '$lte': 40 } } ] } ]})
 		if (edad) {
 			rules['$and'].push({ edad: edad });
 		} else {
@@ -100,10 +97,7 @@ function createMongoParams(params) {
 		} else if (typeof tipo === 'object') {
 			const tipos = tipo.map((tip) => ({ tipo: tip }));
 			rules['$and'].push({ $or: tipos });
-			console.log(rules['$and']);
 		}
-	} else {
-		return {};
 	}
 	// si no hay filtros entonces se borra la informacion del objeto
 	if (rules.$and.length === 0) {

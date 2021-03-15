@@ -74,7 +74,7 @@ function modificarCritica(req, res, next) {
 
 	Critica.findById(id, (err, critica) => {
 		if (err) return next(err);
-		if (!critica) return res.status(404).send('La crítica solicitada no existe');
+		if (!critica) return res.status(404).send({ estado: 'La crítica solicitada no existe' });
 		//Verificar que la crítica pertenezca al usuario actualmente autenticado
 		if (critica.idUsuario === usuarioAutenticado.id) {
 			//Actualizar la informacion de la crítica
@@ -98,7 +98,7 @@ function modificarCritica(req, res, next) {
 				});
 			}
 		} else {
-			res.status(401).send('No tienes los permisos para modificar esta crítica');
+			res.status(401).send({ estado: 'No tienes permisos para realizar esta accion' });
 		}
 	});
 }
@@ -109,7 +109,7 @@ function eliminarCritica(req, res, next) {
 
 	Critica.findById(id, (err, critica) => {
 		if (err) return next(err);
-		if (!critica) return res.status(404).send('Crítica no encontrada');
+		if (!critica) return res.status(404).send({ estado: 'Crítica no encontrada' });
 		//Verificar que la crítica pertenezca al usuario actualmente autenticado
 		if (critica.idUsuario === usuarioAutenticado.id) {
 			//Eliminar critica
