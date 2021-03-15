@@ -5,27 +5,27 @@ const { options } = require('../routes');
 const Pelicula = mongoose.model('Pelicula');
 
 function crearPelicula(req, res, next) {
-	console.log("Mi tipo", res.locals.user.tipo) 
-	if(res.locals.user.tipo === 0) {
-	// Instancia de nueva pelicula usando la clase Pelicula
-	const body = req.body;
+	console.log('Mi tipo', res.locals.user.tipo);
+	if (res.locals.user.tipo === 0) {
+		// Instancia de nueva pelicula usando la clase Pelicula
+		const body = req.body;
 
-	const pelicula = new Pelicula(body);
+		const pelicula = new Pelicula(body);
 
-	// res.send(pelicula);
-	pelicula
-		.validate()
-		.then((result) => {
-			pelicula
-				.save()
-				.then((register) => {
-					return res.status(201).send({ estado: 'Película añadida exitosamente', pelicula: register });
-				})
-				.catch(next);
-		})
-		.catch((err) => {
-			res.status(400).send(err.message);
-		});
+		// res.send(pelicula);
+		pelicula
+			.validate()
+			.then((result) => {
+				pelicula
+					.save()
+					.then((register) => {
+						return res.status(201).send({ estado: 'Película añadida exitosamente', pelicula: register });
+					})
+					.catch(next);
+			})
+			.catch((err) => {
+				res.status(400).send(err.message);
+			});
 	} else {
 		return res.status(401).json({ estado: 'No tienes permisos para realizar esta accion' });
 	}
@@ -195,8 +195,13 @@ function obtenerCamposPeliculas(req, res, next) {
 
 function modificarPelicula(req, res, next) {
 	const id = req.params.id;
-	let update = {};
+	const usuarioAutenticado = res.locals.user;
+	//Verificar que el usuario autenticado sea admin
+	//Usuarios normales no pueden editar la informacion de las peliculas
+	if (usuarioAutenticado.tipo !== 0)
+		return res.status(401).send({ estado: 'No tienes permisos para realizar esta accion' });
 
+	let update = {};
 	const { nombre, duracion, genero, sinopsis, director, estreno, poster, calPromedio } = req.body;
 
 	if (typeof nombre !== 'undefined') update.nombre = nombre;
@@ -223,19 +228,19 @@ function modificarPelicula(req, res, next) {
 }
 
 function eliminarPelicula(req, res, next) {
-	if(res.locals.user.tipo === 0) {
-	const id = req.params.id;
-	Pelicula.findByIdAndDelete(id)
-		.then((result) => {
-			if (!result) {
-				return res.status(404).send('Película no encontrada');
-			}
-			res.status(200).json({ estado: `Película ${id} eliminada`, pelicula: result });
-		})
-		.catch(next);
-	} else {
-		return res.status(401).json({ estado: 'No tienes permisos para realizar esta accion' });
+	const usuarioAutenticado = res.locals.user;
+	if (usuarioAutenticado.tipo === 0) {
+		const id = req.params.id;
+		Pelicula.findByIdAndDelete(id)
+			.then((result) => {
+				if (!result) {
+					return res.status(404).send('Película no encontrada');
+				}
+				res.status(200).json({ estado: `Película ${id} eliminada`, pelicula: result });
+			})
+			.catch(next);
 	}
+	return res.status(401).json({ estado: 'No tienes permisos para realizar esta accion' });
 }
 module.exports = {
 	crearPelicula,
