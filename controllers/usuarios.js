@@ -93,7 +93,7 @@ function createMongoParams(params) {
 		}
 
 		if (typeof tipo === 'number') {
-			rules['$and'].push({ tipo: tipo });
+			rules['$and'].push({ tipo: parseInt(tipo) });
 		} else if (typeof tipo === 'object') {
 			const tipos = tipo.map((tip) => ({ tipo: tip }));
 			rules['$and'].push({ $or: tipos });

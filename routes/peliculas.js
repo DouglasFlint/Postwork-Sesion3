@@ -11,7 +11,6 @@ const {
 const auth = require('./auth');
 const permissions = require('./permissions');
 
-router.get('/campos', obtenerCamposPeliculas);
 router.get('/', obtenerPeliculas); //admite query params
 router.post('/', auth.requerido, permissions, crearPelicula);
 

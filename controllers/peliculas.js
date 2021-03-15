@@ -185,8 +185,9 @@ function obtenerPeliculas(req, res, next) {
 		.then((peliculas) => {
 			if (!peliculas.length) {
 				return res.status(404).send('Ninguna conincidencia fué encontrada');
+			} else {
+				return res.status(200).json(peliculas);
 			}
-			return res.status(200).json(peliculas);
 		})
 		.catch(next);
 }
