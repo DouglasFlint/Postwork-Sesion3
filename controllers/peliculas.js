@@ -31,12 +31,28 @@ function crearPelicula(req, res, next) {
 }
 
 function crearMongoQuery(params) {
-	const { genero, duracion, duracionMin, duracionMax, estreno, estrenoMin, estrenoMax, nombre } = params;
+	const {
+		genero,
+		duracion,
+		duracionMin,
+		duracionMax,
+		estreno,
+		estrenoMin,
+		estrenoMax
+		// nombre
+	} = params;
 
 	//Verificar que los parámetros existentes tengan un valor válido para ser contados
-	const filtros = [ genero, duracion, duracionMin, duracionMax, estreno, estrenoMin, estrenoMax, nombre ].filter(
-		(filtro) => filtro !== undefined
-	);
+	const filtros = [
+		genero,
+		duracion,
+		duracionMin,
+		duracionMax,
+		estreno,
+		estrenoMin,
+		estrenoMax
+		// nombre
+	].filter((filtro) => filtro !== undefined);
 	//objeto que representan las reglas en mongodb
 	let rules = {};
 	//Si hay mas de un flitro agregar el operador $and al query
@@ -45,9 +61,9 @@ function crearMongoQuery(params) {
 			$and: []
 		};
 
-		if (typeof nombre === 'string') {
-			rules['$and'].push({ nombre: nombre });
-		}
+		// if (typeof nombre === 'string') {
+		// 	rules['$and'].push({ nombre: nombre });
+		// }
 
 		if (typeof genero === 'string') {
 			// Un genero

@@ -63,6 +63,16 @@ function obtenerCriticas(req, res, next) {
 		.catch(next);
 }
 
+// function obtenerCritica(req, res, next) {
+// 	const { peliculaID } = req.params;
+// 	Critica.find()
+// 	.exec()
+// 	.then((criticas) => {
+// 		res.status(200).send(critica);
+// 	})
+// 	.catch(next);
+// }
+
 function modificarCritica(req, res, next) {
 	const usuarioAutenticado = res.locals.user;
 	const { comentario, calificacion } = req.body;
