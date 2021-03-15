@@ -98,6 +98,10 @@ function createMongoParams(params) {
 			const tipos = tipo.map((tip) => ({ tipo: tip }));
 			rules['$and'].push({ $or: tipos });
 		}
+	} 
+	
+	else if(Object.keys(rules).length === 0) {
+		return {}
 	}
 	// si no hay filtros entonces se borra la informacion del objeto
 	if (rules.$and.length === 0) {
