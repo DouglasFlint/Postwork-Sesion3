@@ -8,13 +8,15 @@ const {
 	modificarPelicula,
 	eliminarPelicula
 } = require('../controllers/peliculas');
+const auth = require('./auth');
+const permissions = require('./permissions');
 
 router.get('/campos', obtenerCamposPeliculas);
 router.get('/', obtenerPeliculas); //admite query params
-router.post('/', crearPelicula);
+router.post('/', auth.requerido, permissions, crearPelicula);
 
 router.get('/:id', obtenerPeliculaPorID);
-router.delete('/:id', eliminarPelicula);
+router.delete('/:id', auth.requerido, permissions, eliminarPelicula);
 router.put('/:id', modificarPelicula);
 
 module.exports = router;

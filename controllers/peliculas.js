@@ -5,6 +5,8 @@ const { options } = require('../routes');
 const Pelicula = mongoose.model('Pelicula');
 
 function crearPelicula(req, res, next) {
+	console.log("Mi tipo", res.locals.user.tipo) 
+	if(res.locals.user.tipo === 0) {
 	// Instancia de nueva pelicula usando la clase Pelicula
 	const body = req.body;
 
@@ -24,6 +26,9 @@ function crearPelicula(req, res, next) {
 		.catch((err) => {
 			res.status(400).send(err.message);
 		});
+	} else {
+		return res.status(401).json({ estado: 'No tienes permisos para realizar esta accion' });
+	}
 }
 
 function crearMongoQuery(params) {
@@ -218,6 +223,7 @@ function modificarPelicula(req, res, next) {
 }
 
 function eliminarPelicula(req, res, next) {
+	if(res.locals.user.tipo === 0) {
 	const id = req.params.id;
 	Pelicula.findByIdAndDelete(id)
 		.then((result) => {
@@ -227,6 +233,9 @@ function eliminarPelicula(req, res, next) {
 			res.status(200).json({ estado: `Película ${id} eliminada`, pelicula: result });
 		})
 		.catch(next);
+	} else {
+		return res.status(401).json({ estado: 'No tienes permisos para realizar esta accion' });
+	}
 }
 module.exports = {
 	crearPelicula,
