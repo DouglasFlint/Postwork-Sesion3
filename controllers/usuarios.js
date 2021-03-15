@@ -205,9 +205,7 @@ function eliminarUsuario(req, res, next) {
 					return res.status(404).send('Usuario no encontrado');
 				}
 				console.log();
-				res
-					.status(200)
-					.json({ estado: `Usuario con id ${id} y username ${result.username} eliminado`, usuario: result });
+				res.status(200).json({ estado: `Usuario con id ${id} y username ${result.username} eliminado` });
 			})
 			.catch(next);
 	} else {
